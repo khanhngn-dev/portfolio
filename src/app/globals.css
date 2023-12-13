@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #141414;
+  --color-text: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  @apply text-[var(--color-text)];
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-size: 18px;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/80 rounded-full hover:bg-white/90 transition-colors duration-300;
+}
+
+@keyframes blinking {
+  from {
+    background: white;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+.blink {
+  animation: blinking 1s linear infinite;
+}
