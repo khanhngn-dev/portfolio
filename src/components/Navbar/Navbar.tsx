@@ -17,14 +17,14 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        'max-w-7xl px-5 py-3 w-full flex fixed top-0 left-1/2 -translate-x-1/2 z-10 h-20 transition-colors duration-[350ms]',
+        'max-w-7xl px-5 sm:px-8 py-3 w-full flex fixed top-0 left-1/2 -translate-x-1/2 z-10 h-20 transition-colors duration-[350ms]',
         isTop ? 'bg-transparent' : 'bg-[var(--color-bg)] shadow-sm',
       )}
     >
       <Link href="/" className="flex items-center text-xl text-">
         home
       </Link>
-      <div className="nav-link-desktop hidden md:flex ml-auto gap-10">
+      <div className="nav-link-desktop hidden sm:flex ml-auto gap-10">
         <Link href="#about" className={style.link}>
           about
         </Link>
@@ -32,7 +32,7 @@ const Navbar = () => {
           projects
         </Link>
       </div>
-      <div className="nav-link-mobile md:hidden ml-auto flex items-center">
+      <div className="nav-link-mobile sm:hidden ml-auto flex items-center">
         <ToggleButton
           inactiveIcon={<HiBars3 className="h-8 w-8" />}
           activeIcon={<HiXMark className="h-8 w-8" />}

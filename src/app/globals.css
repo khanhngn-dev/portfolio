@@ -28,3 +28,7 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-white/80 rounded-full hover:bg-white/90 transition-colors duration-300;
 }
+
+.container-center {
+  @apply mx-auto max-w-7xl px-5 sm:px-8
+}

@@ -67,10 +67,10 @@ const TypingText: FC<TypingTextProps> = ({
   }, [textArr, timePerLetter]);
 
   return (
-    <div className={clsx('flex items-end relative font-mono pr-[1ch] w-max', wrapperClassName)}>
+    <div className={clsx('flex items-end font-mono w-max', wrapperClassName)}>
       <p
         ref={ref}
-        className={clsx('transition-all whitespace-nowrap overflow-hidden w-0 !leading-none', typingTextClassName)}
+        className={clsx('transition-all whitespace-nowrap overflow-hidden w-0 pb-1', typingTextClassName)}
         style={{
           transitionTimingFunction: `steps(${textArr[currentText].length}, end)`,
         }}
@@ -79,8 +79,10 @@ const TypingText: FC<TypingTextProps> = ({
       </p>
       <div
         className={clsx(
-          'bg-white outline-none border-none text-transparent absolute h-full right-0 bottom-0 w-[1ch]',
+          'bg-white outline-none border-none text-transparent h-full',
           style.blink,
+          // Passing `typingTextClassName` to ensures the cursor is the same size as the text
+          typingTextClassName,
           cursorClassName,
         )}
       >
