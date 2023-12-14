@@ -3,31 +3,37 @@
 import clsx from 'clsx';
 import { FC, useEffect, useRef, useState } from 'react';
 import { wait } from '@/utils';
+import style from './TypingText.module.css';
 
 type TypingTextProps = {
   textArr?: string[];
-  className?: string;
+  typingTextClassName?: string;
+  wrapperClassName?: string;
+  cursorClassName?: string;
+  /* Time the current text should persist measued in ms, default to `4000ms` */
   timePersist?: number;
-  interval?: number;
+  /* Wait time between deleting a prev text and entering the next text measued in ms, default to `1000ms` */
+  timeBetweenText?: number;
+  /* How long each letter should take to be typed measured in ms, default to `100ms` */
   timePerLetter?: number;
 };
 
 const TypingText: FC<TypingTextProps> = ({
   textArr = [],
-  className,
+  wrapperClassName,
+  typingTextClassName,
+  cursorClassName,
   timePersist = 4_000,
-  interval = 1_000,
+  timeBetweenText = 1_000,
   timePerLetter = 100,
 }) => {
   const [currentText, setCurrentText] = useState(0);
   const ref = useRef<HTMLParagraphElement>(null);
-  const cursor = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onNextText = async () => {
       const element = ref.current;
-      const cursorElement = cursor.current;
-      if (!element || !cursorElement) return;
+      if (!element) return;
       // Clear old text
       const prevText = textArr[currentText];
       element.style.transitionDuration = `${timePerLetter * prevText.length}ms`;
@@ -36,22 +42,24 @@ const TypingText: FC<TypingTextProps> = ({
       const nextIdx = (currentText + 1) % textArr.length;
       const nextText = textArr[nextIdx];
       // Wait for prevText to disappear, and buffer time
-      await wait(prevText.length * timePerLetter + interval);
+      await wait(prevText.length * timePerLetter + timeBetweenText);
       element.style.transitionDuration = `${timePerLetter * nextText.length}ms`;
       setCurrentText(nextIdx);
       element.style.width = `${nextText.length}ch`;
     };
 
-    let timeoutId = setTimeout(onNextText, timePersist + textArr[currentText].length * timePerLetter + interval);
+    const timeoutId = setTimeout(
+      onNextText,
+      timePersist + textArr[currentText].length * timePerLetter + timeBetweenText,
+    );
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [timePersist, currentText, textArr, interval, timePerLetter]);
+  }, [timePersist, currentText, textArr, timeBetweenText, timePerLetter]);
 
   useEffect(() => {
     const element = ref.current;
-    const cursorElement = cursor.current;
-    if (!element || !cursorElement) return;
+    if (!element) return;
     // Animate first text
     const firstText = textArr[0];
     element.style.transitionDuration = `${timePerLetter * firstText.length}ms`;
@@ -59,20 +67,21 @@ const TypingText: FC<TypingTextProps> = ({
   }, [textArr, timePerLetter]);
 
   return (
-    <div className="relative w-max min-w-[1ch] pr-[1.3ch] transition-all ease-linear">
+    <div className={clsx('flex items-end relative font-mono pr-[1ch] w-max', wrapperClassName)}>
       <p
         ref={ref}
-        className={clsx(
-          'transition-all font-mono whitespace-nowrap overflow-hidden w-0 !leading-none ease-linear',
-          className,
-        )}
+        className={clsx('transition-all whitespace-nowrap overflow-hidden w-0 !leading-none', typingTextClassName)}
+        style={{
+          transitionTimingFunction: `steps(${textArr[currentText].length}, end)`,
+        }}
       >
         {textArr[currentText]}
       </p>
       <div
-        ref={cursor}
         className={clsx(
-          'w-[1.3ch] h-full bottom-0 right-0 absolute font-mono bg-white outline-none border-none blink text-transparent',
+          'bg-white outline-none border-none text-transparent absolute h-full right-0 bottom-0 w-[1ch]',
+          style.blink,
+          cursorClassName,
         )}
       >
         _

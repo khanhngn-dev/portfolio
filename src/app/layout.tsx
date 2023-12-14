@@ -1,7 +1,7 @@
 import { Background, Navbar } from '@/components';
 import type { Metadata } from 'next';
 import './globals.css';
-import { nunito } from '@/constants';
+import { maven_pro, nunito } from '@/constants';
 
 export const metadata: Metadata = {
   title: `Jerry's portfolio`,

@@ -28,16 +28,3 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-white/80 rounded-full hover:bg-white/90 transition-colors duration-300;
 }
-
-@keyframes blinking {
-  from {
-    background: white;
-  }
-  to {
-    background: transparent;
-  }
-}
-
-.blink {
-  animation: blinking 1s linear infinite;
-}

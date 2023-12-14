@@ -6,15 +6,12 @@ import { TITLE_TEXTS } from '@/constants/home';
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl px-4 overflow-x-hidden">
-      <section id="greeting" className="flex flex-col h-[100dvh] justify-center relative">
-        <div className="w-max mx-auto">
-          <p className="text-xl md:text-2xl font-medium">hi, I&rsquo;m</p>
-          <h1 className="text-4xl md:text-6xl font-bold mt-3 flex md:flex-row flex-col md:items-baseline gap-3 bg-gradient-to-r from-blue-500  to-primary bg-clip-text text-transparent">
-            Khanh G. Nguyen
-            {/* <span className="font-normal text-base md:text-lg">aka. Jerry</span> */}
-          </h1>
-          <TypingText textArr={TITLE_TEXTS} className="text-xl md:text-2xl font-medium mt-3" />
-        </div>
+      <section id="greeting" className="flex flex-col h-[100dvh] justify-center relative gap-4">
+        <p className="text-2xl sm:text-4xl font-medium">hi, I&rsquo;m</p>
+        <h1 className="text-6xl sm:text-7xl font-extrabold flex flex-col bg-gradient-to-r from-blue-500  to-primary bg-clip-text text-transparent pb-2">
+          Khanh Gia Nguyen
+        </h1>
+        <TypingText textArr={TITLE_TEXTS} typingTextClassName="text-3xl sm:text-5xl font-medium " />
         <a href="#about" className="absolute bottom-6 flex flex-col items-center gap-3 self-center">
           <span>about me</span>
           <HiChevronDown className="w-8 h-8 animate-bounce" />
