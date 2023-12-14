@@ -21,8 +21,8 @@ export default function Home() {
       <section className="mt-10">
         <SectionHeader
           title="contact"
-          className="text-xl md:text-2xl font-bold !border-blue-500"
-          iconClassName="stroke-blue-500 stroke-[1.5px] w-8 h-8"
+          className="text-xl md:text-2xl font-bold !border-primary"
+          iconClassName="stroke-primary stroke-[1.5px] w-8 h-8"
         />
         <p className="mt-5">You can reach me using</p>
         <ul>
