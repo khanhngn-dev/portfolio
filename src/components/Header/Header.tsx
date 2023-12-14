@@ -5,8 +5,8 @@ import clsx from 'clsx';
 const Header: FC<HeaderProps> = ({ subtitle, title, className, ...props }) => {
   return (
     <section className={clsx('mx-auto w-max', className)} {...props}>
-      <p className="text-lg md:text-xl">{subtitle}</p>
-      <p className="ml-10 mt-2 text-2xl md:text-4xl font-bold">{title}</p>
+      <p className="text-xl md:text-2xl">{subtitle}</p>
+      <p className="ml-10 mt-2 text-4xl md:text-5xl font-bold">{title}</p>
     </section>
   );
 };

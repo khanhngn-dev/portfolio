@@ -28,48 +28,31 @@ const TypingText: FC<TypingTextProps> = ({
   timePerLetter = 100,
 }) => {
   const [currentText, setCurrentText] = useState(0);
-  const ref = useRef<HTMLParagraphElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const onNextText = async () => {
-      const element = ref.current;
-      if (!element) return;
-      // Clear old text
-      const prevText = textArr[currentText];
-      element.style.transitionDuration = `${timePerLetter * prevText.length}ms`;
-      element.style.width = '0ch';
-      // Animate next text
-      const nextIdx = (currentText + 1) % textArr.length;
-      const nextText = textArr[nextIdx];
-      // Wait for prevText to disappear, and buffer time
-      await wait(prevText.length * timePerLetter + timeBetweenText);
-      element.style.transitionDuration = `${timePerLetter * nextText.length}ms`;
-      setCurrentText(nextIdx);
-      element.style.width = `${nextText.length}ch`;
+      const textElm = textRef.current;
+      if (!textElm) return;
+      const current = textArr[currentText];
+      textElm.style.transitionDuration = `${timePerLetter * current.length}ms`;
+      textElm.style.width = `${current.length}ch`;
+      // Wait for the text to be fully typed
+      await wait(timePerLetter * current.length + timePersist);
+      textElm.style.width = '0ch';
+      // Wait for the text to be fully deleted
+      await wait(timePerLetter * current.length + timeBetweenText);
+      setCurrentText((prev) => (prev + 1) % textArr.length);
     };
 
-    const timeoutId = setTimeout(
-      onNextText,
-      timePersist + textArr[currentText].length * timePerLetter + timeBetweenText,
-    );
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    const timeoutId = setTimeout(onNextText, 0);
+    return () => clearTimeout(timeoutId);
   }, [timePersist, currentText, textArr, timeBetweenText, timePerLetter]);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    // Animate first text
-    const firstText = textArr[0];
-    element.style.transitionDuration = `${timePerLetter * firstText.length}ms`;
-    element.style.width = `${firstText.length}ch`;
-  }, [textArr, timePerLetter]);
 
   return (
     <div className={clsx('flex items-end font-mono w-max', wrapperClassName)}>
       <p
-        ref={ref}
+        ref={textRef}
         className={clsx('transition-all whitespace-nowrap overflow-hidden w-0 pb-1', typingTextClassName)}
         style={{
           transitionTimingFunction: `steps(${textArr[currentText].length}, end)`,
