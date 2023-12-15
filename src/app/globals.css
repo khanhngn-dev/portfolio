@@ -5,6 +5,7 @@
 :root {
   --color-bg: #141414;
   --color-text: #fff;
+  --height-navbar: 4rem;
 }
 
 * {
@@ -13,16 +14,19 @@
   border: 0;
   box-sizing: border-box;
   @apply text-[var(--color-text)];
-  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-bg);
-  font-size: 18px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--height-navbar) + 1rem);
 }
 
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-2 bg-neutral-850 hover:bg-neutral-800 transition-colors;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -30,5 +34,20 @@ body {
 }
 
 .container-center {
-  @apply mx-auto max-w-7xl px-5 sm:px-8
+  @apply mx-auto max-w-7xl px-5 sm:px-8;
+}
+
+@keyframes blinking {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.blinking-cursor {
+  background: white;
+  animation: blinking 1s step-end infinite;
 }

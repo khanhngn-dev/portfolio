@@ -12,6 +12,9 @@ const config: Config = {
         'neutral-850': '#1b1b1b',
         primary: '#ba68c8',
       },
+      fontFamily: {
+        mono: ['var(--font-geist-mono)'],
+      },
     },
   },
   plugins: [],

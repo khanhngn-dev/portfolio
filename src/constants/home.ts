@@ -1,1 +1,1 @@
-export const TITLE_TEXTS = ['software engineer', 'fullstack developer', 'ai enthusiastic', 'tech lover'];
+export const TITLE_TEXTS = ['software engineer', 'fullstack developer', 'prompt engineer', 'tech lover'];

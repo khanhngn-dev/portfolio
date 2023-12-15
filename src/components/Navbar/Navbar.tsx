@@ -17,8 +17,8 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        'max-w-7xl px-5 sm:px-8 py-3 w-full flex fixed top-0 left-1/2 -translate-x-1/2 z-10 h-20 transition-colors duration-[350ms]',
-        isTop ? 'bg-transparent' : 'bg-[var(--color-bg)] shadow-sm',
+        'max-w-7xl px-5 sm:px-8 py-3 w-full flex fixed top-0 left-1/2 -translate-x-1/2 z-10 h-[var(--height-navbar)] transition-colors duration-[350ms]',
+        isTop ? 'bg-transparent' : 'bg-neutral-850 shadow-sm',
       )}
     >
       <Link href="/" className="flex items-center text-xl text-">
