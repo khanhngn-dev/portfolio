@@ -7,6 +7,8 @@ const useTopScroll = (element: WindowProxy | HTMLElement | null) => {
 
   useEffect(() => {
     if (element) {
+      setIsTop(element instanceof Window ? element.scrollY === 0 : element.scrollTop === 0);
+
       const handleScroll = () => {
         const scrollTop = element instanceof Window ? element.scrollY : element.scrollTop;
         // Only update state when scroll top change from 0 to non-zero

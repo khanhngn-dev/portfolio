@@ -31,22 +31,33 @@ const TypingText: FC<TypingTextProps> = ({
   const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    let persistId: NodeJS.Timeout, betweenTextId: NodeJS.Timeout;
+    const textElm = textRef.current;
+    if (!textElm) return;
+
+    const setNextText = () => {
+      setCurrentText((prev) => (prev + 1) % textArr.length);
+    };
+
+    const removeCurrentText = (current: string) => {
+      textElm.style.width = '0ch';
+      betweenTextId = setTimeout(setNextText, timePerLetter * current.length + timeBetweenText);
+    };
+
     const onNextText = async () => {
-      const textElm = textRef.current;
-      if (!textElm) return;
       const current = textArr[currentText];
       textElm.style.transitionDuration = `${timePerLetter * current.length}ms`;
       textElm.style.width = `${current.length}ch`;
       // Wait for the text to be fully typed
-      await wait(timePerLetter * current.length + timePersist);
-      textElm.style.width = '0ch';
-      // Wait for the text to be fully deleted
-      await wait(timePerLetter * current.length + timeBetweenText);
-      setCurrentText((prev) => (prev + 1) % textArr.length);
+      persistId = setTimeout(() => removeCurrentText(current), timePerLetter * current.length + timePersist);
     };
 
     const timeoutId = setTimeout(onNextText, 0);
-    return () => clearTimeout(timeoutId);
+    return () => {
+      persistId && clearTimeout(persistId);
+      betweenTextId && clearTimeout(betweenTextId);
+      clearTimeout(timeoutId);
+    };
   }, [timePersist, currentText, textArr, timeBetweenText, timePerLetter]);
 
   return (

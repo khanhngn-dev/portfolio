@@ -4,3 +4,4 @@ export * from './Card';
 export * from './Header';
 export * from './Background';
 export { default as TypingText } from './TypingText/TypingText';
+export * from './Layouts';

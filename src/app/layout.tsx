@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { nunito, GeistMono } from '@/constants';
 import clsx from 'clsx';
+import { SectionProvider } from '@/contexts';
 
 export const metadata: Metadata = {
   title: `Jerry's portfolio`,
@@ -14,8 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={clsx(nunito.className, GeistMono.variable)}>
         <Background />
-        <Navbar />
-        {children}
+        <SectionProvider>
+          <Navbar />
+          {children}
+        </SectionProvider>
       </body>
     </html>
   );
