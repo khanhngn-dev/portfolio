@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #141414;
   --color-text: #fff;
   --height-navbar: 4rem;
 }
@@ -17,16 +16,16 @@
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: #0d0d0d;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--height-navbar) + 1rem);
+  scroll-padding-top: calc(var(--height-navbar));
 }
 
 ::-webkit-scrollbar {
-  @apply w-2 bg-neutral-850 hover:bg-neutral-800 transition-colors;
+  @apply w-2 bg-neutral-900 hover:bg-neutral-800 transition-colors;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -62,4 +61,12 @@ html {
 
 .dashed-vertical {
   @apply fixed border-r sm:border-r-[2px] border-dashed border-white/40 h-[100dvh] -z-10;
+}
+
+.link {
+  @apply flex items-center relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all duration-300;
+}
+
+.link-mobile {
+  @apply py-4 justify-end px-8 h-16;
 }

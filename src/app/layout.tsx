@@ -1,7 +1,7 @@
-import { Background, Navbar } from '@/components';
+import { Background, Footer, Navbar } from '@/components';
 import type { Metadata } from 'next';
 import './globals.css';
-import { nunito, GeistMono } from '@/constants';
+import { nunito } from '@/constants';
 import clsx from 'clsx';
 import { SectionProvider } from '@/contexts';
 
@@ -13,11 +13,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={clsx(nunito.className, GeistMono.variable)}>
+      <body className={clsx(nunito.className)}>
         <Background />
         <SectionProvider>
           <Navbar />
           {children}
+          <Footer />
         </SectionProvider>
       </body>
     </html>

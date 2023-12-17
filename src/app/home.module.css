@@ -1,3 +1,3 @@
 .hero {
-  @apply flex flex-col h-[100dvh] justify-center gap-6 relative;
+  @apply flex flex-col h-[100svh] justify-center gap-6 relative;
 }

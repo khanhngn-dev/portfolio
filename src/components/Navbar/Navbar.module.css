@@ -1,7 +1,0 @@
-.link {
-  @apply text-white flex items-center relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all duration-300 text-lg md:text-xl;
-}
-
-.link-mobile {
-  @apply py-4 justify-end px-8 h-16;
-}

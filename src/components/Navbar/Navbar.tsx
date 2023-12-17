@@ -1,20 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import style from './Navbar.module.css';
 import { ToggleButton } from '..';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { HiBars3, HiChevronDown, HiXMark } from 'react-icons/hi2';
-import { useTopScroll } from '@/hooks';
+import { useClickOutside, useTopScroll } from '@/hooks';
 import { isClient } from '@/utils';
 import { useSectionContext } from '@/contexts';
+import { ROUTES, SECTIONS } from '@/constants';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { activeSection } = useSectionContext();
   const client = isClient();
   const isTop = useTopScroll(client ? window : null);
+  const navbarMenuRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(navbarMenuRef, () => {
+    if (isMenuOpen) setIsMenuOpen(false);
+  });
 
   const showNavbarBg = !isTop || isMenuOpen;
 
@@ -22,61 +27,55 @@ const Navbar = () => {
     <nav
       className={clsx(
         'transition-colors fixed top-0 duration-[350ms] z-10 w-full',
-        showNavbarBg ? 'bg-neutral-850 shadow-sm' : 'bg-transparent',
+        showNavbarBg ? 'bg-neutral-900 shadow-sm' : 'bg-transparent',
       )}
     >
       <div className={clsx('max-w-7xl mx-auto px-5 sm:px-8 py-3 flex z-10 h-[var(--height-navbar)]')}>
+        <Link className="flex items-center text-lg md:text-xl" href="/">
+          home
+        </Link>
         <div className="flex items-center relative group">
-          <HiChevronDown className="h-6 w-6 mr-2 group-hover:rotate-180 transition-transform" />
-          <a href="#" className="flex items-center text-xl">
-            {activeSection || 'greeting'}
-          </a>
+          <HiChevronDown className="h-6 w-6 mx-2 group-hover:rotate-180 transition-transform" />
+          <div className="flex items-center text-xl">{activeSection || 'greeting'}</div>
           <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-sm -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
-            <li>
-              <Link href="#greeting" className={style.link}>
-                greeting
-              </Link>
-            </li>
-            <li>
-              <Link href="#about" className={style.link}>
-                about
-              </Link>
-            </li>
-            <li>
-              <Link href="#motto" className={style.link}>
-                motto
-              </Link>
-            </li>
+            {SECTIONS.map((section) => (
+              <li key={section}>
+                <Link href={`#${section}`} className={'link'}>
+                  {section}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className="nav-link-desktop hidden sm:flex ml-auto gap-10">
-          <Link href="#about" className={style.link}>
-            about
-          </Link>
-          <Link href="#projects" className={style.link}>
-            projects
-          </Link>
+          {Object.values(ROUTES).map((route) => (
+            <Link key={route} href={route} className={'link'}>
+              {route}
+            </Link>
+          ))}
         </div>
-        <div className="nav-link-mobile sm:hidden ml-auto flex items-center">
+        <div className="nav-link-mobile sm:hidden ml-auto flex items-center" ref={navbarMenuRef}>
           <ToggleButton
             inactiveIcon={<HiBars3 className="h-8 w-8" />}
             activeIcon={<HiXMark className="h-8 w-8" />}
             toggled={isMenuOpen}
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
+          {/* https://www.youtube.com/watch?v=B_n4YONte5A */}
           <div
             className={clsx(
-              'absolute top-full left-0 w-full bg-neutral-850 h-0 transition-all overflow-hidden',
-              isMenuOpen ? 'h-32' : 'h-0',
+              'absolute top-full left-0 w-full bg-neutral-900 transition-all grid',
+              isMenuOpen ? 'grid-rows-[1fr] shadow-sm' : 'grid-rows-[0fr]',
             )}
           >
-            <Link href="#about" className={clsx(style.link, style['link-mobile'])}>
-              about
-            </Link>
-            <Link href="#projects" className={clsx(style.link, style['link-mobile'])}>
-              projects
-            </Link>
+            <div className={clsx('overflow-hidden')}>
+              {Object.values(ROUTES).map((route) => (
+                <Link key={route} href={route} className={clsx('link link-mobile')}>
+                  {route}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

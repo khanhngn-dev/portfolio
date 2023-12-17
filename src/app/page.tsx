@@ -89,7 +89,7 @@ export default function Home() {
       <Section id="motto" className="sm:pt-60 pt-20">
         <Header subtitle="very very" title="important motto" />
 
-        <Card className="mt-5 border-white font-mono">
+        <Card className="mt-10 border-white font-mono">
           <blockquote>
             &ldquo;Any application that can be written in JavaScript, will eventually be written in JavaScript.&rdquo;
           </blockquote>
