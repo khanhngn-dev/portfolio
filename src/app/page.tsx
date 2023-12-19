@@ -113,6 +113,7 @@ export default function Home() {
                 />
               </div>
               <CardList
+                className='min-w-[50%]'
                 items={[
                   'working with Javascript for 3 years',
                   '2 years with its typed counter part',
@@ -152,6 +153,7 @@ export default function Home() {
                 />
               </div>
               <CardList
+                className='min-w-[50%]'
                 items={[
                   'learn this before js/ts',
                   'semantic and accessible HTML',
@@ -170,6 +172,7 @@ export default function Home() {
                 <Image className="p-10" fill src="/icons/node.svg" alt="node icon" />
               </div>
               <CardList
+                className='min-w-[50%]'
                 items={[
                   'working with nodejs for 2 years',
                   'work with filesystem and workers',
@@ -184,6 +187,7 @@ export default function Home() {
                 <Image className="p-10" fill src="/icons/node.svg" alt="express icon" />
               </div>
               <CardList
+                className='min-w-[50%]'
                 items={[
                   'working with express for 2 years',
                   'write efficient middleware',
