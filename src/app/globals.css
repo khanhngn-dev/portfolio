@@ -25,7 +25,7 @@ html {
 }
 
 ::-webkit-scrollbar {
-  @apply w-2 bg-neutral-900 hover:bg-neutral-800 transition-colors;
+  @apply w-2 h-2 bg-neutral-900 hover:bg-neutral-800 transition-colors;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -69,4 +69,10 @@ html {
 
 .link-mobile {
   @apply py-4 justify-end px-8 h-16;
+}
+
+div.swiper-button-prev::after,
+div.swiper-button-next::after {
+  color: white;
+  font-size: 2rem;
 }

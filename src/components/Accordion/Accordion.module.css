@@ -1,0 +1,17 @@
+.accordion-content {
+  grid-template-rows: 0fr;
+  display: grid;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.accordion-title:has(input:checked) ~ .accordion-content {
+  grid-template-rows: 1fr;
+}
+
+.accordion-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-input:checked ~ .accordion-icon {
+  transform: rotate(90deg);
+}

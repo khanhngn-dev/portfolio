@@ -7,4 +7,10 @@ export type CardProps = HTMLAttributes<HTMLDivElement> & {
     url: string;
   };
   children?: ReactNode;
+  showPlus?: boolean;
+}
+
+export type CardListProps = HTMLAttributes<HTMLUListElement> & {
+  items: string[];
+  withCursor?: boolean;
 }

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 const Header: FC<HeaderProps> = ({ subtitle, title, className, wrapperClassName, ...props }) => {
   return (
     <div className={clsx('relative', wrapperClassName)}>
-      <div className={clsx('mx-auto w-max', className)} {...props}>
+      <div className={clsx('mx-auto sm:w-max', className)} {...props}>
         <p className="text-xl md:text-2xl">{subtitle}</p>
         <p className="ml-10 mt-2 text-4xl md:text-5xl font-bold">{title}</p>
       </div>

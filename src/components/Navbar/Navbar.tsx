@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ToggleButton } from '..';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { HiBars3, HiChevronDown, HiXMark } from 'react-icons/hi2';
 import { useClickOutside, useTopScroll } from '@/hooks';
@@ -12,6 +12,7 @@ import { ROUTES, SECTIONS } from '@/constants';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [sections, setSections] = useState<string[]>([]);
   const { activeSection } = useSectionContext();
   const client = isClient();
   const isTop = useTopScroll(client ? window : null);
@@ -21,13 +22,21 @@ const Navbar = () => {
     if (isMenuOpen) setIsMenuOpen(false);
   });
 
+  useEffect(() => {
+    const main = document.getElementById('main');
+    if (!main) return;
+    const sections = main.querySelectorAll('section');
+    const sectionsId = Array.from(sections).map((section) => section.id);
+    setSections(sectionsId);
+  }, []);
+
   const showNavbarBg = !isTop || isMenuOpen;
 
   return (
     <nav
       className={clsx(
         'transition-colors fixed top-0 duration-[350ms] z-10 w-full',
-        showNavbarBg ? 'bg-neutral-900 shadow-sm' : 'bg-transparent',
+        showNavbarBg ? 'bg-neutral-900/70 backdrop-blur-sm shadow-sm' : 'bg-transparent',
       )}
     >
       <div className={clsx('max-w-7xl mx-auto px-5 sm:px-8 py-3 flex z-10 h-[var(--height-navbar)]')}>
@@ -37,15 +46,17 @@ const Navbar = () => {
         <div className="flex items-center relative group">
           <HiChevronDown className="h-6 w-6 mx-2 group-hover:rotate-180 transition-transform" />
           <div className="flex items-center text-xl">{activeSection || 'greeting'}</div>
-          <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-sm -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
-            {SECTIONS.map((section) => (
-              <li key={section}>
-                <Link href={`#${section}`} className={'link'}>
-                  {section}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {sections.length !== 0 ? (
+            <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-sm -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
+              {sections.map((section) => (
+                <li key={section}>
+                  <Link href={`#${section}`} className={'link'}>
+                    {section}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
 
         <div className="nav-link-desktop hidden sm:flex ml-auto gap-10">
