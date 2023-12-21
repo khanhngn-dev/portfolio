@@ -36,7 +36,7 @@ const Navbar = () => {
     <nav
       className={clsx(
         'transition-colors fixed top-0 duration-[350ms] z-10 w-full',
-        showNavbarBg ? 'bg-neutral-900/70 backdrop-blur-sm shadow-sm' : 'bg-transparent',
+        showNavbarBg ? 'bg-neutral-900 shadow-sm' : 'bg-transparent',
       )}
     >
       <div className={clsx('max-w-7xl mx-auto px-5 sm:px-8 py-3 flex z-10 h-[var(--height-navbar)]')}>
@@ -76,8 +76,8 @@ const Navbar = () => {
           {/* https://www.youtube.com/watch?v=B_n4YONte5A */}
           <div
             className={clsx(
-              'absolute top-full left-0 w-full bg-neutral-900 transition-all grid',
-              isMenuOpen ? 'grid-rows-[1fr] shadow-sm' : 'grid-rows-[0fr]',
+              'absolute top-full left-0 w-full transition-all grid',
+              isMenuOpen ? 'grid-rows-[1fr] shadow-sm bg-neutral-900/90 backdrop-blur-sm' : 'grid-rows-[0fr]',
             )}
           >
             <div className={clsx('overflow-hidden')}>

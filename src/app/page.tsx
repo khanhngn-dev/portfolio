@@ -1,4 +1,4 @@
-import { Header, TypingText, Card, Section, CardList, CardSwiper, Highlight, Accordion } from '@/components';
+import { Header, TypingText, Card, Section, CardList, Accordion, AlignImage, Observer } from '@/components';
 import { HiChevronDown } from 'react-icons/hi2';
 import clsx from 'clsx';
 import style from './home.module.css';
@@ -6,7 +6,8 @@ import { BRIEF_ENGINEER, BRIEF_INFO, BRIEF_UI_UX, TITLE_TEXTS } from '@/constant
 import Image from 'next/image';
 export default function Home() {
   return (
-    <main id="main" className="overflow-x-hidden">
+    <main id="main" className="overflow-x-clip">
+      <Observer querySelector=".section-container" />
       <Section id="greeting">
         <div className={clsx(style['hero'])}>
           <div className="flex flex-col relative">
@@ -80,40 +81,29 @@ export default function Home() {
         </Card>
       </Section>
 
-      <Section id="engineer" className="sm:pt-60 pt-20 overflow-x-visible">
+      <Section id="engineer" className="sm:pt-60 pt-20">
         <Header subtitle="all about" title="engineering career" />
 
-        <Accordion title="languages" className="mt-10">
+        {/* Languages */}
+        <Accordion stickyLabel title="languages" className="mt-10">
           <Card className="border-none w-full overflow-y-auto" showPlus={false} title="javascript/typescript">
             <div className="flex flex-col sm:flex-row gap-5">
-              <div className="relative w-full max-w-[300px] aspect-square mx-auto">
-                <Image
-                  fill
-                  className="absolute !w-1/2 !h-max"
-                  style={{
-                    aspectRatio: '1/1',
-                    top: '0.5rem',
-                    left: '0.5rem',
-                  }}
-                  src="/icons/js.svg"
-                  alt="js icon"
-                />
-                <Image
-                  fill
-                  className="absolute !w-1/2 !h-max"
-                  style={{
-                    aspectRatio: '1/1',
-                    top: 'auto',
-                    bottom: '0.5rem',
-                    right: '0.5rem',
-                    left: 'auto',
-                  }}
-                  src="/icons/ts.svg"
-                  alt="ts icon"
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/js.svg',
+                      alt: 'js icon',
+                    },
+                    {
+                      src: '/icons/ts.svg',
+                      alt: 'ts icon',
+                    },
+                  ]}
                 />
               </div>
               <CardList
-                className='min-w-[50%]'
+                className="min-w-[50%]"
                 items={[
                   'working with Javascript for 3 years',
                   '2 years with its typed counter part',
@@ -126,34 +116,22 @@ export default function Home() {
           </Card>
           <Card title="html/css" showPlus={false} className="border-none">
             <div className="flex flex-col sm:flex-row gap-5">
-              <div className="relative w-full max-w-[300px] aspect-square mx-auto">
-                <Image
-                  fill
-                  className="absolute !w-1/2 !h-max"
-                  style={{
-                    aspectRatio: '1/1',
-                    top: '0.5rem',
-                    left: '0.5rem',
-                  }}
-                  src="/icons/html.svg"
-                  alt="html icon"
-                />
-                <Image
-                  fill
-                  className="absolute !w-1/2 !h-max"
-                  style={{
-                    aspectRatio: '1/1',
-                    top: 'auto',
-                    bottom: '0.5rem',
-                    right: '0.5rem',
-                    left: 'auto',
-                  }}
-                  src="/icons/css.svg"
-                  alt="css icon"
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/html.svg',
+                      alt: 'html icon',
+                    },
+                    {
+                      src: '/icons/css.svg',
+                      alt: 'css icon',
+                    },
+                  ]}
                 />
               </div>
               <CardList
-                className='min-w-[50%]'
+                className="min-w-[50%]"
                 items={[
                   'learn this before js/ts',
                   'semantic and accessible HTML',
@@ -164,17 +142,139 @@ export default function Home() {
               />
             </div>
           </Card>
+          <Card title="sql/nosql" showPlus={false} className="border-none">
+            <div className="flex flex-col sm:flex-row gap-5">
+              <div className={clsx(style['image-wrapper'])}>
+                <Image className="p-10" fill src="/icons/sql.svg" alt="sql icon" />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'familiar with N + 1',
+                  'understand tradeoffs between sql and nosql',
+                  'indexes and query optimization',
+                  'experience with ORM (Prisma, TypeORM)',
+                ]}
+              />
+            </div>
+          </Card>
         </Accordion>
-        <Accordion title="backend">
+        {/* Frontend */}
+        <Accordion stickyLabel title="frontend">
+          <Card showPlus={false} title="react" className="border-none">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/react.svg',
+                      alt: 'react icon',
+                    },
+                    {
+                      src: '/icons/redux.svg',
+                      alt: 'redux icon',
+                    },
+                    {
+                      src: '/icons/router.svg',
+                      alt: 'router icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'working with react for 3 years',
+                  'understand lifecycle and hooks',
+                  'write reuseable components',
+                  'use UI lib AntD, MUI, Prime',
+                  'familiar with react-ecosystem (router, form, state, TanStackQuery)',
+                  'optimize performance with memoization and lazy loading',
+                  'experience with @redux/toolkit and context',
+                  'the (best) library that beats frameworks',
+                ]}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} title="vue" className="border-none">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/vue.svg',
+                      alt: 'vue icon',
+                    },
+                    {
+                      src: '/icons/pinia.svg',
+                      alt: 'pinia icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={['working with vue for 6 months', 'use vue3 with composition api', 'not the best nor popular']}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} title="tailwind" className="border-none">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <Image className="p-10" fill src="/icons/tailwind.svg" alt="tailwind icon" />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'working with tailwind for 3 years',
+                  'custom themes and plugins',
+                  '"there are two types of technologies: those that people complain about and those that nobody uses."',
+                ]}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} title="ssg/ssr" className="border-none">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/next.svg',
+                      alt: 'next icon',
+                    },
+                    {
+                      src: '/icons/astro.svg',
+                      alt: 'astro icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'working with next for 2 years',
+                  'astro for 6 months and is amazing',
+                  'seo friendly',
+                  'astro + react > next',
+                  'serious: next is getting worse and worse with each version and being vendor locked into vercel is not a good idea',
+                ]}
+              />
+            </div>
+          </Card>
+        </Accordion>
+        {/* Backend */}
+        <Accordion stickyLabel title="backend">
           <Card showPlus={false} title="nodejs" className="border-none">
             <div className="flex flex-col sm:flex-row gap-10">
-              <div className="relative w-full max-w-[300px] aspect-square mx-auto bg-white">
+              <div className={clsx(style['image-wrapper'], 'bg-white')}>
                 <Image className="p-10" fill src="/icons/node.svg" alt="node icon" />
               </div>
               <CardList
-                className='min-w-[50%]'
+                className="min-w-[50%]"
                 items={[
                   'working with nodejs for 2 years',
+                  'flexible and scalable',
+                  'serverless',
                   'work with filesystem and workers',
                   'the event loop has 6 queues',
                 ]}
@@ -183,11 +283,11 @@ export default function Home() {
           </Card>
           <Card showPlus={false} title="express" className="border-none">
             <div className="flex flex-col sm:flex-row gap-10">
-              <div className="relative w-full max-w-[300px] aspect-square mx-auto bg-white">
-                <Image className="p-10" fill src="/icons/node.svg" alt="express icon" />
+              <div className={clsx(style['image-wrapper'], 'bg-white')}>
+                <Image fill src="/icons/express.svg" alt="express icon" />
               </div>
               <CardList
-                className='min-w-[50%]'
+                className="min-w-[50%]"
                 items={[
                   'working with express for 2 years',
                   'write efficient middleware',
@@ -197,7 +297,158 @@ export default function Home() {
               />
             </div>
           </Card>
+          <Card showPlus={false} title="databases" className="border-none">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/mongo.svg',
+                      alt: 'mongo icon',
+                    },
+                    {
+                      src: '/icons/postgre.svg',
+                      alt: 'postgre icon',
+                    },
+                    {
+                      src: '/icons/mysql.svg',
+                      alt: 'mysql icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={['mongo: nosql, scalable, fast to iterate', 'postgre + mysql: sql, relational, reliable']}
+              />
+            </div>
+          </Card>
         </Accordion>
+        <Accordion stickyLabel title="tools">
+          <Card showPlus={false} className="border-none" title="version control">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/git.svg',
+                      alt: 'git icon',
+                    },
+                    {
+                      src: '/icons/github.svg',
+                      alt: 'github icon',
+                    },
+                    {
+                      src: '/icons/gitlab.svg',
+                      alt: 'gitlab icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'understands git workflow',
+                  'ci/cd with github actions/gitlab ci',
+                  'hosting using github',
+                  'achievement: "rebase without losing code"',
+                ]}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} className="border-none" title="testing">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/playwright.svg',
+                      alt: 'playwright icon',
+                    },
+                    {
+                      src: '/icons/jest.svg',
+                      alt: 'jest icon',
+                    },
+                    {
+                      src: '/icons/vitest.svg',
+                      alt: 'vitest icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'use playwright for booking and enrolling in class',
+                  'use jest for unit testing',
+                  'vitest is amazing (period)',
+                ]}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} className="border-none" title="bundler/build tool">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/webpack.svg',
+                      alt: 'webpack icon',
+                    },
+                    {
+                      src: '/icons/vite.svg',
+                      alt: 'vite icon',
+                    },
+                    {
+                      src: '/icons/rollup.svg',
+                      alt: 'rollup icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'flex: can config webpack',
+                  'adore vite for speed and ease of config',
+                  'anything that runs on rollup runs on vite',
+                ]}
+              />
+            </div>
+          </Card>
+          <Card showPlus={false} className="border-none" title="others">
+            <div className="flex flex-col sm:flex-row gap-10">
+              <div className={clsx(style['image-wrapper'])}>
+                <AlignImage
+                  items={[
+                    {
+                      src: '/icons/babel.svg',
+                      alt: 'babel icon',
+                    },
+                    {
+                      src: '/icons/prettier.svg',
+                      alt: 'prettier icon',
+                    },
+                    {
+                      src: '/icons/eslint.svg',
+                      alt: 'eslint icon',
+                    },
+                  ]}
+                />
+              </div>
+              <CardList
+                className="min-w-[50%]"
+                items={[
+                  'three pillars of js development',
+                  'config babel for transpiling, minifying, polyfilling',
+                  'format code with prettier',
+                  'lint code with eslint',
+                ]}
+              />
+            </div>
+          </Card>
+        </Accordion>
+        <h6 className="mt-5 text-sm font-light italic">note: this accordion is built using css only</h6>
       </Section>
     </main>
   );

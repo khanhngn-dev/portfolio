@@ -7,15 +7,17 @@ import { HiChevronRight } from 'react-icons/hi2';
 type AccordionProps = HTMLAttributes<HTMLDivElement> & {
   title: string;
   children?: React.ReactNode;
+  stickyLabel?: boolean;
 };
 
-const Accordion: FC<AccordionProps> = ({ title, children, className, ...props }) => {
+const Accordion: FC<AccordionProps> = ({ title, children, className, stickyLabel = false, ...props }) => {
   return (
     <div className={clsx('bg-neutral-850 backdrop-blur-sm', className)} {...props}>
       <label
         className={clsx(
-          'flex relative py-3 px-4 cursor-pointer bg-neutral-800 border-l-4 border-white border-solid border-b border-b-neutral-700 shadow items-center justify-between',
+          'flex py-3 px-4 cursor-pointer bg-neutral-800 border-l-4 border-white border-solid border-b border-b-neutral-700 shadow items-center justify-between z-10',
           style['accordion-title'],
+          stickyLabel && 'sticky top-[var(--height-navbar)]',
         )}
       >
         <input type="checkbox" className={clsx('absolute opacity-0', style['accordion-input'])} />

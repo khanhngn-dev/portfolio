@@ -9,3 +9,5 @@ export * from './Footer';
 export * from './Highlight';
 export * from './Swiper';
 export * from './Accordion';
+export * from './Images';
+export * from './Observer'
