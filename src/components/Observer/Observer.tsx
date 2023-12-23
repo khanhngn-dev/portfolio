@@ -20,7 +20,6 @@ const useObserver = ({ querySelector, thresholdSensitivity = 5 }: UseObserverPro
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry.target.id, entry.intersectionRatio);
           if (entry.isIntersecting) maxRatio.set(entry.target.id, entry.intersectionRatio * entry.target.scrollHeight);
           else maxRatio.set(entry.target.id, 0);
         });

@@ -22,7 +22,7 @@ const Accordion: FC<AccordionProps> = ({ title, children, className, stickyLabel
       >
         <input type="checkbox" className={clsx('absolute opacity-0', style['accordion-input'])} />
         <SectionHeader
-          className={style['accordion-title']}
+          className={clsx(style['accordion-title'], 'left-0')}
           title={title}
           iconClassName={clsx(style['accordion-icon'], 'hidden')}
         />

@@ -52,7 +52,16 @@ html {
 }
 
 .dashed-horizontal {
-  @apply absolute border-0 border-t sm:border-t-[2px] border-dashed border-white/40 w-[100dvw] left-1/2 bottom-0 -z-10 -translate-x-1/2;
+  @apply absolute border-0 border-t sm:border-t-[2px] border-dashed border-white/40 w-[100dvw] left-1/2 bottom-0 -z-10 -translate-x-1/2  after:w-full after:h-[2px] after:absolute after:bottom-0 after:left-0;
+}
+.dashed-horizontal::after {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 
 .square-corner {
@@ -65,6 +74,10 @@ html {
 
 .link {
   @apply flex items-center relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all duration-300;
+}
+
+.center-absolute {
+  @apply absolute !top-1/2 !left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
 .link-mobile {

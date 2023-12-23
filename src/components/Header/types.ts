@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from 'react';
 
 export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
   subtitle: string;
@@ -8,5 +8,8 @@ export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
 
 export type SectionHeaderProps = HTMLAttributes<HTMLHeadingElement> & {
   title: string;
+  children?: ReactNode;
   iconClassName?: string;
 };
+
+export type SubSectionHeaderProps = HTMLAttributes<HTMLHeadingElement>;

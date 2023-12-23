@@ -8,7 +8,7 @@ import { HiBars3, HiChevronDown, HiXMark } from 'react-icons/hi2';
 import { useClickOutside, useTopScroll } from '@/hooks';
 import { isClient } from '@/utils';
 import { useSectionContext } from '@/contexts';
-import { ROUTES, SECTIONS } from '@/constants';
+import { ROUTES } from '@/constants';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
   useEffect(() => {
     const main = document.getElementById('main');
     if (!main) return;
-    const sections = main.querySelectorAll('section');
+    const sections = main.querySelectorAll('.section-container');
     const sectionsId = Array.from(sections).map((section) => section.id);
     setSections(sectionsId);
   }, []);
@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        'transition-colors fixed top-0 duration-[350ms] z-10 w-full',
+        'transition-colors fixed top-0 duration-[350ms] z-50 w-full',
         showNavbarBg ? 'bg-neutral-900 shadow-sm' : 'bg-transparent',
       )}
     >
