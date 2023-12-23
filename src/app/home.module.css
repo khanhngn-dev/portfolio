@@ -5,3 +5,19 @@
 .image-wrapper {
   @apply relative w-full max-w-[300px] aspect-square h-max mx-auto sm:mx-0;
 }
+
+.hero-heading {
+@apply text-6xl sm:text-7xl font-extrabold flex flex-col relative;
+}
+
+.hero-text {
+  @apply w-max max-w-full text-transparent bg-gradient-to-r from-blue-600 to-primary bg-clip-text;
+}
+
+.continue-icon {
+  @apply absolute bottom-6 flex flex-col items-center gap-3 self-center
+}
+
+.action-btn {
+  @apply flex items-center border-2 border-solid border-blue-600 hover:bg-blue-900/20 px-4 py-2 transition-colors;
+}

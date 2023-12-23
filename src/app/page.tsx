@@ -41,10 +41,8 @@ export default function Home() {
         <div className={clsx(style['hero'])}>
           <div className="flex flex-col relative">
             <p className="text-2xl sm:text-3xl">hi, I&rsquo;m</p>
-            <h1 className="text-6xl sm:text-7xl font-extrabold flex flex-col relative mt-4">
-              <div className="w-max max-w-full text-transparent bg-gradient-to-r from-blue-600 to-primary bg-clip-text mt-2">
-                Khanh G. Nguyen
-              </div>
+            <h1 className={clsx(style['hero-heading'], 'mt-4')}>
+              <div className={clsx(style['hero-text'], 'mt-2')}>Khanh G. Nguyen</div>
             </h1>
             <TypingText
               textArr={TITLE_TEXTS}
@@ -57,7 +55,7 @@ export default function Home() {
           </div>
           {/* This will relative to the current position within main */}
           <div className={clsx('dashed-vertical')}></div>
-          <a href="#about" className="absolute bottom-6 flex flex-col items-center gap-3 self-center">
+          <a href="#about" className={style['continue-icon']}>
             <span>about me</span>
             <HiChevronDown className="w-8 h-8 animate-bounce" />
           </a>
@@ -75,11 +73,7 @@ export default function Home() {
         <Card
           title="tldr:"
           className="mt-10 flex items-center gap-3 border-l-white border-l-2"
-          postFix={() => (
-            <button className="flex items-center border-2 border-solid border-blue-600 hover:bg-blue-900/20 group px-4 py-2 transition-colors">
-              grab my cv
-            </button>
-          )}
+          postFix={() => <button className={style['action-btn']}>grab my cv</button>}
         />
 
         <Card title="as a normal person" className="mt-10 border-l-blue-600 border-l-2" showPlus>
@@ -178,9 +172,7 @@ export default function Home() {
         <Header subtitle="faster than" title="designer" />
         <Card title="how I use figma" className="mt-10 border-l-2 border-l-white">
           <div className="flex gap-5 items-center">
-            <button className="flex items-center border-2 border-solid border-blue-600 hover:bg-blue-900/20 group px-4 py-2 transition-colors">
-              remember my cv?
-            </button>
+            <button className={style['action-btn']}>remember my cv?</button>
             yes, this was designed using figma
           </div>
           <div className="mt-5">
