@@ -6,9 +6,11 @@ import clsx from 'clsx';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
 
 const BackToTop = () => {
-  const isTop = useTopScroll(isClient() ? window : null, isClient() ? document.documentElement.clientHeight : 0);
+  const isClientSite = isClient();
+  const isTop = useTopScroll(isClientSite ? window : null, isClientSite ? document.documentElement.clientHeight : 0);
 
   const onBackToTop = () => {
+    if (!isClientSite) return;
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
