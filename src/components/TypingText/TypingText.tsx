@@ -61,7 +61,7 @@ const TypingText: FC<TypingTextProps> = ({
   }, [timePersist, currentText, textArr, timeBetweenText, timePerLetter]);
 
   return (
-    <div className={clsx('flex items-end font-mono w-max', wrapperClassName)}>
+    <div className={clsx('flex items-end w-max', wrapperClassName)}>
       <p
         ref={textRef}
         className={clsx('transition-all whitespace-nowrap overflow-hidden w-0 pb-1', typingTextClassName)}

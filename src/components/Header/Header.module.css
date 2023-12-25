@@ -2,3 +2,13 @@
   @apply after:absolute after:w-[calc(100%_+_4rem)] after:-left-8 after:bottom-0 after:border-white/40 after:border-dashed after:border-b
   before:absolute before:-top-8 before:h-[calc(100%_+_4rem)] before:right-0 before:border-white/40 before:border-dashed before:border-l;
 }
+
+.impression-header {
+  @apply text-3xl sm:text-4xl uppercase tracking-[0.4rem];
+}
+
+@media screen and (min-width: 640px) {
+  .impression-header {
+    writing-mode: vertical-rl;
+  }
+}

@@ -45,7 +45,7 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center relative group">
           <HiChevronDown className="h-6 w-6 mx-2 group-hover:rotate-180 transition-transform" />
-          <div className="flex items-center text-xl">{activeSection || 'greeting'}</div>
+          <div className="flex items-center text-xl">{activeSection}</div>
           {sections.length !== 0 ? (
             <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-sm -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
               {sections.map((section) => (

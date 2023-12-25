@@ -12,7 +12,7 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  @apply text-[var(--color-text)];
+  @apply text-[var(--color-text)] font-mono;
 }
 
 body {
@@ -84,8 +84,3 @@ html {
   @apply py-4 justify-end px-8 h-16;
 }
 
-div.swiper-button-prev::after,
-div.swiper-button-next::after {
-  color: white;
-  font-size: 2rem;
-}

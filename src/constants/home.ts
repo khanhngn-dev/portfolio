@@ -1,3 +1,5 @@
+import { QuoteCardProps } from '@/components/Card/types';
+
 export const TITLE_TEXTS = ['software engineer', 'fullstack developer', 'prompt engineer', 'tech lover'];
 
 export const SECTIONS = ['greeting', 'about', 'motto', 'engineer', 'uiux', 'inspiration', 'contact'];
@@ -212,7 +214,7 @@ export const TESTING_OTHERS_SKILL = {
 };
 
 export const BENEFIT_UI_UX = {
-  title: 'benefits working as a developer + designer',
+  title: 'best of both worlds',
   items: [
     'understand responsive and adaptive design',
     'understand accessibility and seo',
@@ -231,3 +233,37 @@ export const USED_UI = {
     'mantine',
   ],
 };
+
+export const REFERENCES: QuoteCardProps[] = [
+  {
+    name: 'Hung B. Nguyen',
+    title: 'Mentor - Senior Fullstack Developer',
+    company: {
+      name: 'Grab Ltd.',
+      url: '/experiences/grab',
+    },
+    quote: 'I have worked with him for 2 years. He is a hard-working and responsible person.',
+    date: '12/2023',
+  },
+  {
+    name: 'Phuoc H. Nguyen',
+    title: 'Mentor - Senior Fullstack Developer',
+    company: {
+      name: 'Grab Ltd.',
+      url: '/experiences/grab',
+    },
+    quote: 'I have worked with him for 2 years. He is a hard-working and responsible person.',
+    date: '12/2023',
+  },
+  {
+    name: 'Ha NT. Pham',
+    title: 'Colleague - Software Engineer',
+    company: {
+      name: 'Grab Ltd.',
+      url: '/experiences/grab',
+    },
+    quote:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    date: '12/2023',
+  },
+];

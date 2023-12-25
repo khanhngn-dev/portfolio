@@ -9,7 +9,11 @@ const CardCheckList: FC<CardCheckListProps> = ({ items, className, withCursor = 
         <input type="checkbox" readOnly className="mt-2" checked={item.checked} />
         <div>
           <label className={clsx(item.checked && 'line-through')}>{item.title}</label>
-          {item.description && <p className="mt-2 text-light text-white/80">{item.description}</p>}
+          {item.description && (
+            <p className="mt-2 text-light text-white/80">
+              {'//'} {item.description}
+            </p>
+          )}
         </div>
       </li>
     ))}

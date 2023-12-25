@@ -2,7 +2,6 @@ import { Background, Footer, Navbar } from '@/components';
 import type { Metadata } from 'next';
 import './globals.css';
 import { nunito } from '@/constants';
-import clsx from 'clsx';
 import { SectionProvider } from '@/contexts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={clsx(nunito.className)}>
+      <body className={nunito.variable}>
         <SpeedInsights />
         <Background />
         <SectionProvider>

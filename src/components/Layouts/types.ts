@@ -1,6 +1,8 @@
 import { HTMLAttributes } from 'react';
 
-export type SectionProps = HTMLAttributes<HTMLDivElement>;
+export type SectionProps = HTMLAttributes<HTMLDivElement> & {
+  allowOverflow?: boolean;
+}
 
 export type SubSectionProps = HTMLAttributes<HTMLDivElement>;
 

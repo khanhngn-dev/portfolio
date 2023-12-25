@@ -1,0 +1,40 @@
+.custom-swiper {
+  --swiper-navigation-sides-offset: 0;
+  height: auto !important;
+}
+
+.custom-swiper :global(.swiper-button-prev::after),
+.custom-swiper :global(.swiper-button-next::after) {
+  color: white;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 640px) {
+  .custom-swiper :global(.swiper-button-prev::after),
+  .custom-swiper :global(.swiper-button-next::after) {
+    font-size: 2rem;
+    visibility: visible;
+  }
+}
+.custom-swiper :global(.swiper-pagination) {
+  display: flex;
+  justify-content: center;
+  --swiper-pagination-bottom: 0px;
+}
+
+.custom-swiper :global(.swiper-pagination-bullet) {
+  --swiper-pagination-bullet-width: 24px;
+  --swiper-pagination-bullet-height: 8px;
+  --swiper-pagination-bullet-border-radius: 4px;
+  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.333);
+  transition: width 0.3s ease-in-out;
+}
+
+.custom-swiper :global(.swiper-pagination-bullet):hover {
+  opacity: 0.5;
+}
+
+.custom-swiper :global(.swiper-pagination-bullet-active) {
+  --swiper-pagination-bullet-width: 36px;
+  background-color: white;
+}

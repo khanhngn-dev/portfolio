@@ -5,13 +5,14 @@ export type CardProps = HTMLAttributes<HTMLDivElement> & {
   title?: string;
   detail?: {
     title: string;
-    url: string;
+    url?: string;
   };
   children?: ReactNode;
   preFix?: () => ReactNode;
   postFix?: () => ReactNode;
   showPlus?: boolean;
   bodyClassName?: string;
+  titleClassName?: string;
 };
 
 export type CardListProps = HTMLAttributes<HTMLUListElement> & {
@@ -26,7 +27,6 @@ export type CardCheckListProps = HTMLAttributes<HTMLUListElement> & {
     checked: boolean;
   }[];
   withCursor?: boolean;
-
 };
 
 export type CardAccordionProps = HTMLAttributes<HTMLDivElement> & {
@@ -34,4 +34,15 @@ export type CardAccordionProps = HTMLAttributes<HTMLDivElement> & {
   items: string[];
   images?: ImageProps[];
   imageClassName?: string;
+};
+
+export type QuoteCardProps = CardProps & {
+  name: string;
+  title: string;
+  company: {
+    name: string;
+    url: string;
+  };
+  quote: string;
+  date: string;
 };

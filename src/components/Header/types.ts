@@ -13,3 +13,7 @@ export type SectionHeaderProps = HTMLAttributes<HTMLHeadingElement> & {
 };
 
 export type SubSectionHeaderProps = HTMLAttributes<HTMLHeadingElement>;
+
+export type ImpressionHeaderProps = HTMLAttributes<HTMLHeadingElement> & {
+  reversed?: boolean;
+}

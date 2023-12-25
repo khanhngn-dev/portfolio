@@ -7,7 +7,11 @@ import style from './Header.module.css';
 const SubSectionHeader: FC<SubSectionHeaderProps> = ({ children, className, ...props }) => {
   return (
     <h2
-      className={clsx('text-2xl sm:text-3xl relative h-max z-10 mx-auto w-max flex', style['right-corner'], className)}
+      className={clsx(
+        'text-2xl sm:text-3xl relative h-max z-10 mx-auto w-max flex tracking-widest',
+        style['right-corner'],
+        className,
+      )}
       {...props}
     >
       {children}
