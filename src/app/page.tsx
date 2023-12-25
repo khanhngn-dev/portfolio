@@ -15,6 +15,8 @@ import {
   ImpressionHeader,
   CardSwiper,
   QuoteCard,
+  Highlight,
+  SectionHeader,
 } from '@/components';
 import { HiChevronDown } from 'react-icons/hi2';
 import clsx from 'clsx';
@@ -127,6 +129,20 @@ export default function Home() {
         </Card>
       </Section>
 
+      {/* <Section id="reference" className="sm:pt-60 pt-20">
+        <Header subtitle="references" title="what others say" />
+
+        <CardSwiper<QuoteCardProps>
+          className="mt-20"
+          items={REFERENCES}
+          template={(item) => <QuoteCard className="h-full flex flex-col" {...item} />}
+          navigation
+          pagination={{
+            clickable: true,
+          }}
+        />
+      </Section> */}
+
       <Section id="engineer" className="sm:pt-60 pt-20">
         <Header subtitle="all about" title="engineering career" />
 
@@ -223,18 +239,87 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="reference" className="sm:pt-60 pt-20">
-        <Header subtitle="references" title="what others say" />
+      <Section id="affiliations" className="sm:pt-60 pt-20">
+        <Header subtitle="some" title="affiliations" />
 
-        <CardSwiper<QuoteCardProps>
-          className="mt-20"
-          items={REFERENCES}
-          template={(item) => <QuoteCard className="h-full flex flex-col" {...item} />}
-          navigation
-          pagination={{
-            clickable: true,
-          }}
-        />
+        <SubSection className="mt-20">
+          <Grid>
+            <SkillCard
+              title="meow meow org"
+              items={['4 members', '3 projects (aielts, k-eshop, mychat)', 'passionate and hardcore']}
+              images={[
+                {
+                  src: '/icons/meowmeow.svg',
+                  alt: 'meow meow org',
+                },
+              ]}
+            />
+            <SkillCard
+              title="dsc fptu"
+              items={['core frontend', 'training and mentoring new members', 'hosting events and sharing']}
+              images={[
+                {
+                  src: '/icons/dsc.svg',
+                  alt: 'dsc',
+                },
+              ]}
+            />
+          </Grid>
+        </SubSection>
+      </Section>
+
+      <Section id="contact" className="sm:pt-60 pt-20">
+        <Header subtitle="how to" title="reach me" />
+
+        <div className="mt-20 flex flex-wrap border-solid border-l-2 border-l-blue-600">
+          <div className="bg-neutral-800 p-3 flex-1 basis-1/2 min-w-[300px] flex flex-col">
+            <SectionHeader title="my contact" />
+            <CardList
+              className="mt-5 p-3 h-full"
+              items={[
+                'email: khanhngn.dev@gmail.com',
+                'phone: +84 387 034 483',
+                'github: KhanhNguyenGia',
+                'linkedin: khanh-gia-nguyen',
+              ]}
+            />
+          </div>
+          <div className="bg-neutral-900 p-3 sm:p-4 flex-1 basis-1/2 min-w-[300px]">
+            <SectionHeader title="leave yours" />
+            <form className="mt-5 flex flex-col" onSubmit={(e) => e.preventDefault()}>
+              <label className="block">
+                <p>name</p>
+                <input
+                  type="text"
+                  placeholder="who are you"
+                  className="w-full p-3 mt-3 bg-neutral-850 border border-solid border-white/40 hover:border-white/80 transition-colors"
+                />
+              </label>
+              <label className="block mt-5">
+                <p>email</p>
+                <input
+                  type="email"
+                  placeholder="name@email.com"
+                  className="w-full mt-3 p-3 bg-neutral-850 border border-solid border-white/40 hover:border-white/80 transition-colors"
+                />
+              </label>
+
+              <label className="block mt-5">
+                <p>message</p>
+                <textarea
+                  placeholder="your inquiry"
+                  className="w-full mt-3 p-3 bg-neutral-850 border border-solid border-white/40 hover:border-white/80 transition-colors"
+                />
+              </label>
+
+              <p className="mt-5 italic text-white/60 font-light">note: don&rsquo;t worry, no malicious intent here</p>
+
+              <button type="submit" className="mt-5 px-4 py-2 ml-auto bg-primary hover:bg-opacity-80 transition-colors">
+                send
+              </button>
+            </form>
+          </div>
+        </div>
       </Section>
     </main>
   );

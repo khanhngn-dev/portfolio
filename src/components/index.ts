@@ -11,3 +11,4 @@ export * from './Swiper';
 export * from './Accordion';
 export * from './Images';
 export * from './Observer'
+export * from './BackToTop';

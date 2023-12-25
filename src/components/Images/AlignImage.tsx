@@ -17,7 +17,7 @@ const AlignImage: FC<AlignImageProps> = ({ items, className }) => {
   if (items.length === 1)
     return (
       <Wrapper className={className}>
-        <Image {...items[0]} fill className="!w-2/3 !h-2/3 center-absolute" />
+        <Image {...items[0]} fill className="!w-3/4 !h-3/4 center-absolute" />
       </Wrapper>
     );
   if (items.length === 2)

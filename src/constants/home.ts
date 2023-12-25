@@ -228,9 +228,7 @@ export const USED_UI = {
     'ant design: great for dashboard',
     'material ui: the guidelines > the library',
     'prime: ant + mui',
-    'tailwind ui',
-    'chakra ui',
-    'mantine',
+    'tailwind ui, chakra, mantine, radix ui',
   ],
 };
 
