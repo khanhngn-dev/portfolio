@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { FC } from 'react';
+
 import style from './Button.module.css';
 import { ToggleButtonProps } from './types';
 

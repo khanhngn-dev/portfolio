@@ -1,32 +1,36 @@
 'use client';
 
+import clsx from 'clsx';
+import { HiCog6Tooth } from 'react-icons/hi2';
+
 import {
-  Header,
-  TypingText,
+  Accordion,
   Card,
-  Section,
-  CardList,
-  Observer,
-  SkillCard,
   CardCheckList,
+  CardList,
+  CardSwiper,
+  ContactList,
+  FlexGrid,
+  Header,
+  Hero,
+  ImpressionHeader,
+  Observer,
+  QuoteCard,
+  Section,
+  SectionHeader,
+  SkillCard,
   SubSection,
   SubSectionHeader,
-  Grid,
-  ImpressionHeader,
-  CardSwiper,
-  QuoteCard,
-  Highlight,
-  SectionHeader,
+  TypingText,
 } from '@/components';
-import { HiChevronDown } from 'react-icons/hi2';
-import clsx from 'clsx';
-import style from './home.module.css';
+import { QuoteCardProps } from '@/components/Card/types';
 import {
   BENEFIT_UI_UX,
   BRIEF_ENGINEER,
   BRIEF_INFO,
   BRIEF_UI_UX,
   BUNDLER_BUILD_TOOOL_SKILL,
+  CONTACT_INFO,
   DATA_BASE_SKILL,
   HTML_CSS_SKILL,
   JS_TS_SKILL,
@@ -41,40 +45,29 @@ import {
   USED_UI,
   VERSION_CI_CD_SKILL,
 } from '@/constants';
-import { QuoteCardProps } from '@/components/Card/types';
+
+import style from './home.module.css';
+
 export default function Home() {
   return (
-    <main id="main" className="overflow-x-clip">
+    <>
       <Observer querySelector=".section-container" />
       <Section id="greeting">
-        <div className={clsx(style['hero'])}>
-          <div className="flex flex-col relative">
-            <p className="text-2xl sm:text-3xl">hi, I&rsquo;m</p>
-            <h1 className={clsx(style['hero-heading'], 'mt-4')}>
-              <div className={clsx(style['hero-text'], 'mt-2')}>Khanh G. Nguyen</div>
-            </h1>
+        <Hero
+          title="Khanh G. Nguyen"
+          subtitle="hi, I'm"
+          nextSection={{
+            title: 'about me',
+            url: '#about',
+          }}
+          postFix={() => (
             <TypingText
               textArr={TITLE_TEXTS}
               typingTextClassName="text-3xl sm:text-4xl font-medium"
               wrapperClassName="mt-3"
             />
-            {/* This will relative to the current position of the name */}
-            <div className={clsx('dashed-horizontal')}></div>
-            <div className={clsx('square-corner')}></div>
-          </div>
-          {/* This will relative to the current position within main */}
-          <div className={clsx('dashed-vertical')}></div>
-          <a href="#about" className={style['continue-icon']}>
-            <span>about me</span>
-            <HiChevronDown className="w-8 h-8 animate-bounce" />
-          </a>
-        </div>
-        {/* <div
-          className="w-full h-full absolute -z-10 bottom-0"
-          style={{
-            background: `linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(20,20,20,0.4) 65%, rgba(20,20,20,1) 100%)`,
-          }}
-        ></div> */}
+          )}
+        />
       </Section>
       <Section id="about" className="sm:pt-60 pt-20">
         <Header subtitle="something" title="about me" />
@@ -97,8 +90,8 @@ export default function Home() {
           <Card
             className="flex-grow"
             detail={{
-              url: '#engineer',
-              title: 'More detail',
+              url: '/engineer',
+              title: '/engineer',
             }}
             showPlus
           >
@@ -110,8 +103,8 @@ export default function Home() {
           <ImpressionHeader>with ui/ux</ImpressionHeader>
           <Card
             detail={{
-              url: '#uiux',
-              title: 'More detail',
+              url: '/uiux',
+              title: '/uiux',
             }}
             className="flex-grow"
             showPlus
@@ -124,12 +117,12 @@ export default function Home() {
       <Section id="goal" className="sm:pt-60 pt-20">
         <Header subtitle="future" title="todo list" />
 
-        <Card title="checklist of thinks I want to do" className="mt-20 border-l-primary border-l-2" showPlus>
+        <Card title="things I want to do" className="mt-20 border-l-primary border-l-2" showPlus>
           <CardCheckList items={TODO_LIST} withCursor />
         </Card>
       </Section>
 
-      {/* <Section id="reference" className="sm:pt-60 pt-20">
+      <Section id="reference" className="sm:pt-60 pt-20">
         <Header subtitle="references" title="what others say" />
 
         <CardSwiper<QuoteCardProps>
@@ -141,64 +134,70 @@ export default function Home() {
             clickable: true,
           }}
         />
-      </Section> */}
+      </Section>
 
       <Section id="engineer" className="sm:pt-60 pt-20">
-        <Header subtitle="all about" title="engineering career" />
+        <Header subtitle="the stack(overflow)" title="engineer career" />
 
-        <Card className="mt-20 border-l-white border-l-2" title="words to live by">
+        <Card className="mt-20 border-l-2 border-l-white" title="words to live by">
           <blockquote className="leading-loose">
             &ldquo;Any application that can be written in JavaScript, will eventually be written in JavaScript.&rdquo;
           </blockquote>
           <div className="w-max ml-auto italic font-sm mt-3">- Jeff Atwood, 2009</div>
         </Card>
-        {/* languages */}
         <SubSection className="mt-20">
-          <SubSectionHeader className="my-20">languages</SubSectionHeader>
+          <SubSectionHeader>languages</SubSectionHeader>
 
-          <Grid className="mt-8">
+          <FlexGrid className="mt-20">
             <SkillCard {...JS_TS_SKILL} />
             <SkillCard {...HTML_CSS_SKILL} />
-          </Grid>
+          </FlexGrid>
         </SubSection>
 
-        {/* frontend */}
-        <SubSection className="!border-blue-800 mt-20">
-          <SubSectionHeader className="my-20">frontend stack</SubSectionHeader>
+        <SubSection className="mt-20">
+          <SubSectionHeader>frontend stack</SubSectionHeader>
 
-          <Grid className="mt-8">
+          <FlexGrid className="mt-20">
             <SkillCard {...REACT_SKILL} />
             <SkillCard {...TAILWIND_SKILL} />
             <SkillCard {...NEXT_ASTRO_SKILL} />
-          </Grid>
+          </FlexGrid>
         </SubSection>
 
-        {/* backend */}
-        <SubSection className="!border-[rgb(116,34,130)] mt-20">
-          <SubSectionHeader className="my-20">backend stack</SubSectionHeader>
+        <SubSection className="mt-20">
+          <SubSectionHeader>backend stack</SubSectionHeader>
 
-          <Grid className="mt-8">
+          <FlexGrid className="mt-20">
             <SkillCard {...NODE_EXPRESS_SKILL} />
             <SkillCard {...DATA_BASE_SKILL} />
-          </Grid>
+          </FlexGrid>
         </SubSection>
 
-        {/* tools */}
         <SubSection className="mt-20">
-          <SubSectionHeader className="my-20">dev tools</SubSectionHeader>
+          <SubSectionHeader>dev tools</SubSectionHeader>
 
-          <Grid className="mt-8">
+          <FlexGrid className="mt-20">
             <SkillCard {...VERSION_CI_CD_SKILL} />
             <SkillCard {...BUNDLER_BUILD_TOOOL_SKILL} />
-            <Card title={TESTING_OTHERS_SKILL.title} className="!border-[1px] border-white/10 h-max">
-              <CardList items={TESTING_OTHERS_SKILL.items} />
-            </Card>
-          </Grid>
+            <Card
+              className="!border-[1px] border-white/10 h-max pt-2 sm:pt-4 !px-0 !pb-0"
+              preFix={() => (
+                <div className="h-full w-full mb-5 max-w-[250px] max-h-[250px] aspect-square relative mx-auto">
+                  <HiCog6Tooth className="w-2/3 h-2/3 center-absolute" />
+                </div>
+              )}
+              postFix={() => (
+                <Accordion title={TESTING_OTHERS_SKILL.title}>
+                  <CardList className='p-3 sm:p-4' items={TESTING_OTHERS_SKILL.items} />
+                </Accordion>
+              )}
+            ></Card>
+          </FlexGrid>
         </SubSection>
       </Section>
 
       <Section id="uiux" className="sm:pt-60 pt-20">
-        <Header subtitle="faster than" title="designer" />
+        <Header subtitle="doable design" title="FASTER DESIGNER" />
 
         <div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-blue-600 border-solid">
           <ImpressionHeader>
@@ -243,7 +242,7 @@ export default function Home() {
         <Header subtitle="some" title="affiliations" />
 
         <SubSection className="mt-20">
-          <Grid>
+          <FlexGrid>
             <SkillCard
               title="meow meow org"
               items={['4 members', '3 projects (aielts, k-eshop, mychat)', 'passionate and hardcore']}
@@ -264,7 +263,7 @@ export default function Home() {
                 },
               ]}
             />
-          </Grid>
+          </FlexGrid>
         </SubSection>
       </Section>
 
@@ -274,15 +273,8 @@ export default function Home() {
         <div className="mt-20 flex flex-wrap border-solid border-l-2 border-l-blue-600">
           <div className="bg-neutral-800 p-3 flex-1 basis-1/2 min-w-[300px] flex flex-col">
             <SectionHeader title="my contact" />
-            <CardList
-              className="mt-5 p-3 h-full"
-              items={[
-                'email: khanhngn.dev@gmail.com',
-                'phone: +84 387 034 483',
-                'github: KhanhNguyenGia',
-                'linkedin: khanh-gia-nguyen',
-              ]}
-            />
+
+            <ContactList className="mt-5 h-full" contacts={CONTACT_INFO} />
           </div>
           <div className="bg-neutral-900 p-3 sm:p-4 flex-1 basis-1/2 min-w-[300px]">
             <SectionHeader title="leave yours" />
@@ -321,6 +313,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </main>
+    </>
   );
 }

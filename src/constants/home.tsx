@@ -1,4 +1,7 @@
+import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa6';
+
 import { QuoteCardProps } from '@/components/Card/types';
+import { ContactProps } from '@/components/Contact/Contact';
 
 export const TITLE_TEXTS = ['software engineer', 'fullstack developer', 'prompt engineer', 'tech lover'];
 
@@ -234,34 +237,49 @@ export const USED_UI = {
 
 export const REFERENCES: QuoteCardProps[] = [
   {
-    name: 'Hung B. Nguyen',
-    title: 'Mentor - Senior Fullstack Developer',
+    name: 'A V. Nguyen',
+    title: 'Mentor - Senior Software Engineer',
     company: {
-      name: 'Grab Ltd.',
-      url: '/experiences/grab',
+      name: 'Test inc.',
+      url: '#',
     },
     quote: 'I have worked with him for 2 years. He is a hard-working and responsible person.',
     date: '12/2023',
   },
   {
-    name: 'Phuoc H. Nguyen',
-    title: 'Mentor - Senior Fullstack Developer',
-    company: {
-      name: 'Grab Ltd.',
-      url: '/experiences/grab',
-    },
-    quote: 'I have worked with him for 2 years. He is a hard-working and responsible person.',
-    date: '12/2023',
-  },
-  {
-    name: 'Ha NT. Pham',
+    name: 'B T. Ngo',
     title: 'Colleague - Software Engineer',
     company: {
-      name: 'Grab Ltd.',
-      url: '/experiences/grab',
+      name: 'Test inc.',
+      url: '#',
     },
     quote:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: '12/2023',
+  },
+];
+
+export const CONTACT_INFO: ContactProps[] = [
+  {
+    icon: <FaEnvelope className="w-6 h-8" />,
+    text: 'khanhngn.dev@gmail.com',
+    url: 'mailto:khanhngn.dev@gmail.com',
+    textToCopy: 'khanhngn.dev@gmail.com',
+  },
+  {
+    icon: <FaPhone className="w-6 h-8" />,
+    text: '+84 839 868 853',
+    url: 'tel:+84839868853',
+    textToCopy: '+84839868853',
+  },
+  {
+    icon: <FaGithub className="w-8 h-8" />,
+    text: 'KhanhNguyenGia',
+    url: 'https://github.com/KhanhNguyenGia',
+  },
+  {
+    icon: <FaLinkedin className="w-8 h-8" />,
+    text: 'khanh-gia-nguyen',
+    url: 'https://www.linkedin.com/in/khanh-gia-nguyen/',
   },
 ];

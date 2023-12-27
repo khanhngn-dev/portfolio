@@ -1,6 +1,7 @@
-import { FC } from 'react';
-import { HeaderProps } from './types';
 import clsx from 'clsx';
+import { FC } from 'react';
+
+import { HeaderProps } from './types';
 
 const Header: FC<HeaderProps> = ({ subtitle, title, className, wrapperClassName, ...props }) => {
   return (

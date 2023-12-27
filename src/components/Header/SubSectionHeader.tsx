@@ -1,8 +1,9 @@
+import clsx from 'clsx';
 import { FC } from 'react';
 import { HiChevronLeft } from 'react-icons/hi2';
-import { SubSectionHeaderProps } from './types';
-import clsx from 'clsx';
+
 import style from './Header.module.css';
+import { SubSectionHeaderProps } from './types';
 
 const SubSectionHeader: FC<SubSectionHeaderProps> = ({ children, className, ...props }) => {
   return (

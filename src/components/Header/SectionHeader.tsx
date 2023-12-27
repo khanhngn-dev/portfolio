@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import { SectionHeaderProps } from './types';
 import { clsx } from 'clsx';
+import { FC } from 'react';
 import { HiChevronRight } from 'react-icons/hi2';
+
+import { SectionHeaderProps } from './types';
 
 const SectionHeader: FC<SectionHeaderProps> = ({ title, className, iconClassName, children, ...props }) => {
   return (

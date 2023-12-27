@@ -1,7 +1,9 @@
 'use client';
 
+import { FC, ReactNode, useEffect, useState } from 'react';
+
 import { isClient } from '@/utils';
-import { useState, ReactNode, FC, useEffect } from 'react';
+
 import { SectionContext } from '.';
 
 type SectionContextProps = {

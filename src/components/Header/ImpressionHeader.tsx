@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import { ImpressionHeaderProps } from './types';
 import clsx from 'clsx';
+import { FC } from 'react';
+
 import style from './Header.module.css';
+import { ImpressionHeaderProps } from './types';
 
 const ImpressionHeader: FC<ImpressionHeaderProps> = ({ children, className, reversed = false, ...props }) => {
   let renderedChildren = children;
@@ -17,10 +18,7 @@ const ImpressionHeader: FC<ImpressionHeaderProps> = ({ children, className, reve
   }
 
   return (
-    <h3
-      className={clsx(style['impression-header'], className)}
-      {...props}
-    >
+    <h3 className={clsx(style['impression-header'], className)} {...props}>
       {renderedChildren}
     </h3>
   );

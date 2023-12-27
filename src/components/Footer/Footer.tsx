@@ -1,8 +1,10 @@
-import { ROUTES } from '@/constants';
-import Link from 'next/link';
-import style from './Footer.module.css';
 import clsx from 'clsx';
+import Link from 'next/link';
+
 import { VercelIcon } from '@/assets';
+import { ROUTES } from '@/constants';
+
+import style from './Footer.module.css';
 
 const Footer = () => {
   return (

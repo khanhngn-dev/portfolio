@@ -1,7 +1,8 @@
 'use client';
 
-import { useSectionContext } from '@/contexts';
 import { useEffect } from 'react';
+
+import { useSectionContext } from '@/contexts';
 
 type UseObserverProps = {
   querySelector: string;

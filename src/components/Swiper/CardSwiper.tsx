@@ -1,17 +1,17 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, A11y } from 'swiper/modules';
-
+import clsx from 'clsx';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import style from './Swiper.module.css';
-import { CardSwiperProps } from './types';
+import { A11y, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import { Card } from '..';
 import { CardProps } from '../Card/types';
-import clsx from 'clsx';
+import style from './Swiper.module.css';
+import { CardSwiperProps } from './types';
 
 const defaultTemplate = (item: CardProps) => <Card {...item} />;
 

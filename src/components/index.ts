@@ -10,5 +10,8 @@ export * from './Highlight';
 export * from './Swiper';
 export * from './Accordion';
 export * from './Images';
-export * from './Observer'
+export * from './Observer';
 export * from './BackToTop';
+export * from './Hero';
+export * from './Tooltip';
+export * from './Contact';

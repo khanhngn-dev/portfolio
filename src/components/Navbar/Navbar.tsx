@@ -1,15 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import { ToggleButton } from '..';
-import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { HiBars3, HiChevronDown, HiXMark } from 'react-icons/hi2';
+
+import { ROUTES } from '@/constants';
+import { useSectionContext } from '@/contexts';
 import { useClickOutside, useTopScroll } from '@/hooks';
 import { isClient } from '@/utils';
-import { useSectionContext } from '@/contexts';
-import { ROUTES } from '@/constants';
-import { usePathname } from 'next/navigation';
+
+import { ToggleButton } from '..';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

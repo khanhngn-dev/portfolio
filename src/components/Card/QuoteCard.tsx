@@ -1,9 +1,10 @@
-import { FC } from 'react';
-import { QuoteCardProps } from './types';
-import { Card } from '.';
-import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa6';
-import Link from 'next/link';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { FC } from 'react';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa6';
+
+import { Card } from '.';
+import { QuoteCardProps } from './types';
 
 const QuoteCard: FC<QuoteCardProps> = ({ company, date, name, quote, title, className, ...props }) => {
   return (
@@ -11,7 +12,7 @@ const QuoteCard: FC<QuoteCardProps> = ({ company, date, name, quote, title, clas
       title={name}
       className={clsx('relative overflow-y-clip', className)}
       preFix={() => (
-        <div className='mb-5'>
+        <div className="mb-5">
           <p className="mt-2 text-light italic text-white/80">
             {'//'} {title}
           </p>

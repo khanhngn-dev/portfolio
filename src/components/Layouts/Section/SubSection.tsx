@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import style from './Section.module.css';
-import { SubSectionProps } from './types';
 import { FC } from 'react';
+
+import style from './Section.module.css';
+import { SubSectionProps } from '../types';
 
 const SubSection: FC<SubSectionProps> = ({ children, className, ...props }) => {
   return (

@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
+
 import { Card, CardList } from '..';
 
 const Highlight = () => {

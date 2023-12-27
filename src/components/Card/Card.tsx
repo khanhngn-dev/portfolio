@@ -1,8 +1,10 @@
-import { FC } from 'react';
-import { CardProps } from './types';
 import clsx from 'clsx';
-import { SectionHeader } from '..';
+import Link from 'next/link';
+import { FC } from 'react';
 import { HiChevronDoubleRight } from 'react-icons/hi2';
+
+import { SectionHeader } from '..';
+import { CardProps } from './types';
 
 const PlusIcon = () => (
   <div className="absolute -top-2 -right-2 w-4 aspect-square flex items-center justify-center leading-none">+</div>
@@ -10,10 +12,10 @@ const PlusIcon = () => (
 
 const DetailSection = ({ url, title }: Required<CardProps>['detail']) =>
   url ? (
-    <a href={url} className="flex items-center gap-2 mt-3 w-max ml-auto">
+    <Link href={url} className="flex items-center gap-2 mt-3 w-max ml-auto">
       <HiChevronDoubleRight />
       {title}
-    </a>
+    </Link>
   ) : (
     <span className="flex items-center gap-2 mt-3 w-max ml-auto">
       <HiChevronDoubleRight />
@@ -42,7 +44,7 @@ const Card: FC<CardProps> = ({
   return (
     <div
       className={clsx(
-        'p-3 sm:p-4 bg-neutral-850/40 backdrop-blur-sm  border-solid relative border border-white/10',
+        'p-2 sm:p-4 bg-neutral-850/70 backdrop-blur-[2px] border-solid relative border border-white/10',
         className,
       )}
       {...props}

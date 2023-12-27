@@ -1,6 +1,7 @@
-import { FC } from 'react';
-import { GridProps } from './types';
 import clsx from 'clsx';
+import { FC } from 'react';
+
+import { GridProps } from '../types';
 
 const Grid: FC<GridProps> = ({ minSize = '300px', className, children, ...props }) => {
   return (

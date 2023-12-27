@@ -1,8 +1,9 @@
-import { FC, HTMLAttributes } from 'react';
-import style from './Accordion.module.css';
 import clsx from 'clsx';
-import { SectionHeader } from '..';
+import { FC, HTMLAttributes } from 'react';
 import { HiChevronRight } from 'react-icons/hi2';
+
+import { SectionHeader } from '..';
+import style from './Accordion.module.css';
 
 type AccordionProps = HTMLAttributes<HTMLDivElement> & {
   title: string;
@@ -15,7 +16,7 @@ const Accordion: FC<AccordionProps> = ({ title, children, className, stickyLabel
     <div className={clsx('bg-neutral-850 backdrop-blur-sm', className)} {...props}>
       <label
         className={clsx(
-          'flex py-3 px-4 cursor-pointer bg-neutral-800 border-l-4 border-white border-solid border-b border-b-neutral-700 shadow items-center justify-between z-10',
+          'flex py-3 px-4 cursor-pointer bg-neutral-800 border-l-2 border-white border-solid border-b border-b-neutral-700 shadow items-center justify-between z-10',
           style['accordion-title'],
           stickyLabel && 'sticky top-[var(--height-navbar)]',
         )}

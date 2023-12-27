@@ -1,15 +1,14 @@
 @keyframes blinking {
-    from,
-    to {
-      background: transparent;
-    }
-  
-    50% {
-      background: #fff;
-    }
+  from,
+  to {
+    background: transparent;
   }
-  
-  .blink {
-    animation: blinking 0.8s infinite;
+
+  50% {
+    background: #fff;
   }
-  
+}
+
+.blink {
+  animation: blinking 0.8s infinite;
+}

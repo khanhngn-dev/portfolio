@@ -1,6 +1,7 @@
-import { FC } from 'react';
-import { CardCheckListProps } from './types';
 import clsx from 'clsx';
+import { FC } from 'react';
+
+import { CardCheckListProps } from './types';
 
 const CardCheckList: FC<CardCheckListProps> = ({ items, className, withCursor = false, ...props }) => (
   <ul className={clsx('flex flex-col gap-5', className)} {...props}>

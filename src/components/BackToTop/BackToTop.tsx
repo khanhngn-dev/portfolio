@@ -1,9 +1,10 @@
 'use client';
 
-import { useTopScroll } from '@/hooks';
-import { isClient } from '@/utils';
 import clsx from 'clsx';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
+
+import { useTopScroll } from '@/hooks';
+import { isClient } from '@/utils';
 
 const BackToTop = () => {
   const isClientSite = isClient();
