@@ -47,3 +47,19 @@ export type QuoteCardProps = CardProps & {
   quote: string;
   date: string;
 };
+
+export type RotateCardProps = {
+  children: React.ReactNode;
+  width?: number;
+  height?: number;
+  maxRotate?: number;
+  maxStep?: number;
+  blur?: number;
+  color?: string;
+  spread?: number;
+  style?: React.CSSProperties;
+  container?: Document | Element | null;
+  borderColor?: string;
+  borderWeight?: number;
+  className?: string;
+};

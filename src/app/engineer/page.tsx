@@ -1,6 +1,8 @@
-import { Metadata } from 'next';
+'use client';
+
+import Image from 'next/image';
 import Link from 'next/link';
-import { HiCog6Tooth } from 'react-icons/hi2';
+import { HiChevronDoubleUp, HiCog6Tooth } from 'react-icons/hi2';
 
 import {
   Accordion,
@@ -9,8 +11,8 @@ import {
   CardList,
   FlexGrid,
   Header,
-  Hero,
   Observer,
+  RotateCard,
   Section,
   SkillCard,
   StaggerImage,
@@ -32,32 +34,31 @@ import {
   VERSION_CI_CD_SKILL,
 } from '@/constants';
 
-export const metadata: Metadata = {
-  title: "Jerry's portfolio | Engineer",
-  description: "Jerry Nguyen portfolio's engineer page",
-};
-
 const EngineerPage = () => {
   return (
     <>
       <Observer querySelector=".section-container" />
       <Section id="greeting">
-        <Hero
-          title="Engineer Career"
-          subtitle="all about"
-          postFix={() => (
+        <div className="dashed-vertical"></div>
+        <div className="min-h-[100lvh] pt-[calc(var(--height-navbar)_+_2rem)] flex items-center gap-10 flex-col sm:flex-row justify-center">
+          <div className="">
+            <RotateCard className="" width={288} height={400}>
+              <Image src="/images/dev_card.png" fill alt="dev card" />
+            </RotateCard>
+            <p className="mt-10 flex items-center gap-2 font-light text-white/80 text-sm justify-center">
+              <HiChevronDoubleUp className="w-6 h-6" />
+              that&lsquo;s daily.dev dev card
+            </p>
+          </div>
+          <div className="">
+            <h1 className="text-6xl sm:text-7xl font-bold">Engineer Career</h1>
             <TypingText
-              textArr={['tech stack', 'projects', 'leetcode', 'hackerrank']}
+              textArr={['tech stack', 'projects & projects', 'geek stats']}
               typingTextClassName="text-3xl sm:text-4xl font-medium"
               wrapperClassName="mt-3"
-              timePersist={3_000}
             />
-          )}
-          nextSection={{
-            title: 'stack(overflow)',
-            url: '#stack',
-          }}
-        />
+          </div>
+        </div>
       </Section>
       <Section id="stack" className="pt-20 sm:pt-60">
         <Header subtitle="technology &" title="stack-overflow" />
