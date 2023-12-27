@@ -25,10 +25,10 @@ const RotateCard: FC<RotateCardProps> = ({
   const { x, y } = coord;
 
   const rotateHandler = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       const midX = window.innerWidth / 2;
       const midY = window.innerHeight / 2;
-      let { x, y } = e;
+      let { clientX: x, clientY: y } = e instanceof MouseEvent ? e : e.touches[0];
       x = (x - midX) / maxStep;
       y = (y - midY) / maxStep;
       if (x > maxRotate) x = maxRotate;
@@ -50,9 +50,11 @@ const RotateCard: FC<RotateCardProps> = ({
     const castedContainer = container as HTMLElement;
 
     castedContainer.addEventListener('mousemove', rotateHandler);
+    castedContainer.addEventListener('touchmove', rotateHandler);
     castedContainer.addEventListener('mouseleave', resetRotateHandler);
     return () => {
       castedContainer.removeEventListener('mousemove', rotateHandler);
+      castedContainer.removeEventListener('touchmove', rotateHandler);
       castedContainer.removeEventListener('mouseleave', resetRotateHandler);
     };
   }, [container, rotateHandler]);

@@ -38,10 +38,10 @@ const EngineerPage = () => {
   return (
     <>
       <Observer querySelector=".section-container" />
-      <Section id="greeting">
+      <Section id="dev_card">
         <div className="dashed-vertical"></div>
-        <div className="min-h-[100lvh] pt-[calc(var(--height-navbar)_+_2rem)] flex items-center gap-10 flex-col sm:flex-row justify-center">
-          <div className="">
+        <div className="min-h-[100lvh] pt-[calc(var(--height-navbar)_+_2rem)] flex items-center gap-10 flex-col-reverse sm:flex-row justify-center">
+          <div>
             <RotateCard className="" width={288} height={400}>
               <Image src="/images/dev_card.png" fill alt="dev card" />
             </RotateCard>
@@ -50,7 +50,7 @@ const EngineerPage = () => {
               that&lsquo;s daily.dev dev card
             </p>
           </div>
-          <div className="">
+          <div>
             <h1 className="text-6xl sm:text-7xl font-bold">Engineer Career</h1>
             <TypingText
               textArr={['tech stack', 'projects & projects', 'geek stats']}
