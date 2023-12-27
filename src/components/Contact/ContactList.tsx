@@ -11,8 +11,8 @@ const ContactList = ({ contacts, className }: ContactListProps) => {
   return (
     <ul className={clsx('gap-8 flex flex-col', className)}>
       {contacts.map((contact) => (
-        <li key={contact.url} className="border border-solid border-white/40 bg-neutral-850/50">
-          <Contact {...contact} className="p-2" />
+        <li key={contact.url}>
+          <Contact {...contact} className="p-2 w-max" />
         </li>
       ))}
     </ul>

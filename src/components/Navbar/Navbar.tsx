@@ -62,7 +62,7 @@ const Navbar = () => {
               <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-2xl border border-white/20 border-solid -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
                 {sections.map((section) => (
                   <li key={section}>
-                    <Link href={`#${section}`} className={'link'}>
+                    <Link href={`#${section}`} className={clsx('link', section === activeSection && 'active')}>
                       {section}
                     </Link>
                   </li>
@@ -74,7 +74,7 @@ const Navbar = () => {
 
         <div className="nav-link-desktop hidden sm:flex ml-auto gap-8">
           {Object.values(ROUTES).map((route) => (
-            <Link key={route} href={route} className={'link'}>
+            <Link key={route} href={route} className={clsx('link', pathname.includes(route) && 'active')}>
               {route}
             </Link>
           ))}
@@ -95,7 +95,11 @@ const Navbar = () => {
           >
             <div className={clsx('overflow-hidden')}>
               {Object.values(ROUTES).map((route) => (
-                <Link key={route} href={route} className={clsx('link link-mobile')}>
+                <Link
+                  key={route}
+                  href={route}
+                  className={clsx('link link-mobile', pathname.includes(route) && 'active')}
+                >
                   {route}
                 </Link>
               ))}

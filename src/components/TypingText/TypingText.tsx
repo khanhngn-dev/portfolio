@@ -12,13 +12,13 @@ type TypingTextProps = {
   typingTextClassName?: string;
   wrapperClassName?: string;
   cursorClassName?: string;
-  /* Time the current text should persist measued in ms, default to `4000ms` */
+  /** Time the current text should persist measued in ms, default to `4000ms` */
   timePersist?: number;
-  /* Wait time between deleting a prev text and entering the next text measued in ms, default to `1000ms` */
+  /** Wait time between deleting a prev text and entering the next text measued in ms, default to `1000ms` */
   timeBetweenText?: number;
-  /* How long each letter should take to be typed measured in ms, default to `100ms` */
+  /** How long each letter should take to be typed measured in ms, default to `100ms` */
   timePerLetter?: number;
-  /* Run once, default to `false` */
+  /** Run once, default to `false` */
   runOnce?: boolean;
 };
 

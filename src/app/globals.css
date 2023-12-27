@@ -76,6 +76,10 @@ html {
   @apply flex items-center relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all duration-300;
 }
 
+.link.active {
+  @apply after:w-full after:bg-primary;
+}
+
 .center-absolute {
   @apply absolute !top-1/2 !left-1/2 -translate-x-1/2 -translate-y-1/2;
 }

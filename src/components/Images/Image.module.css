@@ -1,0 +1,13 @@
+@media screen and (min-width: 640px) {
+  .stagger-image > *:nth-child(even) {
+    @apply relative top-5;
+  }
+
+  .stagger-image > *:nth-child(odd) {
+    @apply relative -top-5;
+  }
+}
+
+.stagger-image {
+  @apply sm:py-10 gap-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+}

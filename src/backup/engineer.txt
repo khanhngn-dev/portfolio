@@ -1,0 +1,60 @@
+<Section id="engineer" className="sm:pt-60 pt-20">
+        <Header subtitle="all about" title="engineer career" />
+
+        <Card className="mt-20 border-l-2 border-l-white" title="words to live by">
+          <blockquote className="leading-loose">
+            &ldquo;Any application that can be written in JavaScript, will eventually be written in JavaScript.&rdquo;
+          </blockquote>
+          <div className="w-max ml-auto italic font-sm mt-3">- Jeff Atwood, 2009</div>
+        </Card>
+
+        <SubSection className="mt-20">
+          <SubSectionHeader>languages</SubSectionHeader>
+
+          <FlexGrid className="mt-20">
+            <SkillCard {...JS_TS_SKILL} />
+            <SkillCard {...HTML_CSS_SKILL} />
+          </FlexGrid>
+        </SubSection>
+
+        <SubSection className="mt-20">
+          <SubSectionHeader>frontend stack</SubSectionHeader>
+
+          <FlexGrid className="mt-20">
+            <SkillCard {...REACT_SKILL} />
+            <SkillCard {...TAILWIND_SKILL} />
+            <SkillCard {...NEXT_ASTRO_SKILL} />
+          </FlexGrid>
+        </SubSection>
+
+        <SubSection className="mt-20">
+          <SubSectionHeader>backend stack</SubSectionHeader>
+
+          <FlexGrid className="mt-20">
+            <SkillCard {...NODE_EXPRESS_SKILL} />
+            <SkillCard {...DATA_BASE_SKILL} />
+          </FlexGrid>
+        </SubSection>
+
+        <SubSection className="mt-20">
+          <SubSectionHeader>dev tools</SubSectionHeader>
+
+          <FlexGrid className="mt-20">
+            <SkillCard {...VERSION_CI_CD_SKILL} />
+            <SkillCard {...BUNDLER_BUILD_TOOOL_SKILL} />
+            <Card
+              className="!border-[1px] border-white/10 h-max pt-2 sm:pt-4 !px-0 !pb-0"
+              preFix={() => (
+                <div className="h-full w-full mb-5 max-w-[250px] max-h-[250px] aspect-square relative mx-auto">
+                  <HiCog6Tooth className="w-2/3 h-2/3 center-absolute" />
+                </div>
+              )}
+              postFix={() => (
+                <Accordion title={TESTING_OTHERS_SKILL.title}>
+                  <CardList className='p-3 sm:p-4' items={TESTING_OTHERS_SKILL.items} />
+                </Accordion>
+              )}
+            ></Card>
+          </FlexGrid>
+        </SubSection>
+      </Section>

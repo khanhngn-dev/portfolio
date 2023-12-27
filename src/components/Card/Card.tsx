@@ -6,13 +6,24 @@ import { HiChevronDoubleRight } from 'react-icons/hi2';
 import { SectionHeader } from '..';
 import { CardProps } from './types';
 
-const PlusIcon = () => (
-  <div className="absolute -top-2 -right-2 w-4 aspect-square flex items-center justify-center leading-none">+</div>
+const plusPosition = {
+  tl: '-top-2 -left-2',
+  tr: '-top-2 -right-2',
+  bl: '-bottom-2 -left-2',
+  br: '-bottom-2 -right-2',
+};
+
+const PlusIcon: FC<{ position?: CardProps['plusPosition'] }> = ({ position = 'tr' }) => (
+  <div
+    className={clsx('absolute w-4 aspect-square flex items-center justify-center leading-none', plusPosition[position])}
+  >
+    +
+  </div>
 );
 
-const DetailSection = ({ url, title }: Required<CardProps>['detail']) =>
+const DetailSection: FC<Required<CardProps>['detail']> = ({ url, title }) =>
   url ? (
-    <Link href={url} className="flex items-center gap-2 mt-3 w-max ml-auto">
+    <Link href={url} className="flex items-center gap-2 mt-5 w-max ml-auto link">
       <HiChevronDoubleRight />
       {title}
     </Link>
@@ -24,7 +35,7 @@ const DetailSection = ({ url, title }: Required<CardProps>['detail']) =>
   );
 
 const CardBody = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <div className={clsx('first:mt-0 mt-3 p-3 border border-solid border-white/40 bg-neutral-800', className)}>
+  <div className={clsx('first:mt-0 mt-3 p-3 border border-solid border-white/20 bg-neutral-800', className)}>
     {children}
   </div>
 );
@@ -39,12 +50,13 @@ const Card: FC<CardProps> = ({
   preFix: PreFix,
   bodyClassName,
   titleClassName,
+  plusPosition = 'tr',
   ...props
 }) => {
   return (
     <div
       className={clsx(
-        'p-2 sm:p-4 bg-neutral-850/70 backdrop-blur-[2px] border-solid relative border border-white/10',
+        'p-2 sm:p-4 bg-neutral-850/60 backdrop-blur-[2px] border-solid relative border border-white/10',
         className,
       )}
       {...props}
@@ -60,7 +72,7 @@ const Card: FC<CardProps> = ({
       {/* Anchor */}
       {detail ? <DetailSection {...detail} /> : null}
       {/* Plus */}
-      {showPlus ? <PlusIcon /> : null}
+      {showPlus ? <PlusIcon position={plusPosition} /> : null}
     </div>
   );
 };

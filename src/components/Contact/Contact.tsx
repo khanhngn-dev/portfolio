@@ -21,7 +21,7 @@ const Contact = ({ icon, text, url, textToCopy = url, className }: ContactProps)
   return (
     <div className={clsx('flex items-center group link', className)}>
       {icon}
-      <a className="ml-3 mr-auto font-thin" href={url}>
+      <a className="ml-3 mr-5 font-thin" href={url}>
         {text}
       </a>
       <Tooltip text={tooltip}>

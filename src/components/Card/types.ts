@@ -13,6 +13,7 @@ export type CardProps = HTMLAttributes<HTMLDivElement> & {
   showPlus?: boolean;
   bodyClassName?: string;
   titleClassName?: string;
+  plusPosition?: 'tr' | 'tl' | 'br' | 'bl';
 };
 
 export type CardListProps = HTMLAttributes<HTMLUListElement> & {

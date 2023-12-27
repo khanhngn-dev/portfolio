@@ -1,0 +1,70 @@
+<Section id="uiux" className="sm:pt-60 pt-20">
+<Header subtitle="doable design" title="FASTER DESIGNER" />
+
+<div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-blue-600 border-solid">
+  <ImpressionHeader>
+    <span className="block">HOW I</span>
+    <span className="block">USE FIGMA</span>
+  </ImpressionHeader>
+  <Card className="flex-grow">
+    <div className="flex gap-5 sm:items-center flex-col sm:flex-row">
+      <button className={clsx(style['action-btn'], 'justify-center')}>remember my cv?</button>
+      yes, this was designed using figma
+    </div>
+    <div className="mt-5">
+      why? allowing quick change of title/position, swapping relevant projects/skills since everything uses
+      components
+    </div>
+    <div className="mt-5 pb-1 border-b border-white/40 border-solid">
+      =&gt; hr gets that tailored cv in seconds; I get to do other things; win-win
+    </div>
+  </Card>
+</div>
+
+<div className="mt-20 flex flex-col sm:flex-row-reverse gap-4 p-3 sm:p-4 border-l-2 border-l-white border-solid">
+  <ImpressionHeader>
+    <span className="block">DEV +</span>
+    <span className="block">DESIGN</span>
+  </ImpressionHeader>
+  <Card title={BENEFIT_UI_UX.title} className="flex-grow">
+    <CardList items={BENEFIT_UI_UX.items} />
+  </Card>
+</div>
+
+<div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-primary border-solid">
+  <ImpressionHeader>LIBRARIES</ImpressionHeader>
+
+  <Card className="flex-grow">
+    <CardList items={USED_UI.items} />
+  </Card>
+</div>
+</Section>
+
+<Section id="affiliations" className="sm:pt-60 pt-20">
+<Header subtitle="some" title="affiliations" />
+
+<SubSection className="mt-20">
+  <FlexGrid>
+    <SkillCard
+      title="meow meow org"
+      items={['4 members', '3 projects (aielts, k-eshop, mychat)', 'passionate and hardcore']}
+      images={[
+        {
+          src: '/icons/meowmeow.svg',
+          alt: 'meow meow org',
+        },
+      ]}
+    />
+    <SkillCard
+      title="dsc fptu"
+      items={['core frontend', 'training and mentoring new members', 'hosting events and sharing']}
+      images={[
+        {
+          src: '/icons/dsc.svg',
+          alt: 'dsc',
+        },
+      ]}
+    />
+  </FlexGrid>
+</SubSection>
+</Section>
