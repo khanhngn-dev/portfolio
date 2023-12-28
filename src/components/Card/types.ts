@@ -58,7 +58,7 @@ export type RotateCardProps = {
   color?: string;
   spread?: number;
   style?: React.CSSProperties;
-  container?: Document | Element | null;
+  container?: string;
   borderColor?: string;
   borderWeight?: number;
   className?: string;

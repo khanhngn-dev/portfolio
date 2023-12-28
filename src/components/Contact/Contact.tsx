@@ -26,7 +26,7 @@ const Contact = ({ icon, text, url, textToCopy = url, className }: ContactProps)
       </a>
       <Tooltip text={tooltip}>
         <FaCopy
-          className="w-4 h-4 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="w-6 h-6 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer"
           onClick={() => handleCopy(textToCopy)}
         />
       </Tooltip>

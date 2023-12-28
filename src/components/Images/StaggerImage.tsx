@@ -30,10 +30,10 @@ const StaggerImage: FC<StaggerImageProps> = ({ className, items, lightBorder }) 
               lightBorder ? 'border-white/10' : 'border-white/20',
             )}
           >
-            <div className="px-5 mb-3">
+            <div className="px-5 my-auto">
               <AlignImage items={images} />
             </div>
-            <p className="text-center mt-auto p-3 bg-neutral-950/80 flex items-center border-t border-solid border-white/40">
+            <p className="text-center mt-3 p-3 bg-neutral-950/80 flex items-center border-t border-solid border-white/40">
               <HiChevronRight className="w-8 h-8" />
               {title}
             </p>

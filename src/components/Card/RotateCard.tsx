@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 import { isClient } from '@/utils';
 
@@ -11,51 +11,79 @@ const RotateCard: FC<RotateCardProps> = ({
   width = 250,
   height = 400,
   maxRotate = 20,
-  maxStep = 10,
-  blur = 20,
-  color = '#ffffff44',
+  maxStep = 20,
+  blur = 40,
+  color = 'rgba(255,255,255,.2)',
   spread = 0,
   style,
-  container = isClient() ? document : null,
+  container,
   borderColor = '#0000',
   borderWeight = 0,
   className,
 }) => {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
   const { x, y } = coord;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glareRef = useRef<HTMLDivElement>(null);
+  // Find the middle of the screen
+  const midX = useRef(0);
+  const midY = useRef(0);
 
   const rotateHandler = useCallback(
     (e: MouseEvent) => {
-      const midX = window.innerWidth / 2;
-      const midY = window.innerHeight / 2;
+      if (!cardRef.current) return;
+
+      // Grab mouse position, subtract center, divide by maxStep
       let { clientX: x, clientY: y } = e;
-      x = (x - midX) / maxStep;
-      y = (y - midY) / maxStep;
-      if (x > maxRotate) x = maxRotate;
-      if (x < -maxRotate) x = -maxRotate;
-      if (y > maxRotate) y = maxRotate;
-      if (y < -maxRotate) y = -maxRotate;
+      x = (x - midX.current) / maxStep;
+      y = (y - midY.current) / maxStep;
+
+      // Limit rotation to maxRotate
+      x = Math.max(Math.min(x, maxRotate), -maxRotate);
+      y = Math.max(Math.min(y, maxRotate), -maxRotate);
       setCoord({ x, y });
     },
     [maxRotate, maxStep],
   );
 
-  const resetRotateHandler = () => {
+  const resetRotateHandler = useCallback(() => {
+    if (!cardRef.current || !glareRef.current) return;
+    cardRef.current.style.transition = 'transform 100ms linear';
+    glareRef.current.style.transition = 'box-shadow 100ms linear';
     setCoord({ x: 0, y: 0 });
-  };
+  }, []);
 
   useEffect(() => {
-    if (!container) return;
+    if (!isClient()) return;
+    const element = container
+      ? document.getElementById(container) || document.documentElement
+      : document.documentElement;
+    midX.current = element.clientWidth / 2;
+    midY.current = element.clientHeight / 2;
+    let timeout: NodeJS.Timeout | null = null;
 
-    const castedContainer = container as HTMLElement;
-
-    castedContainer.addEventListener('mousemove', rotateHandler);
-    castedContainer.addEventListener('mouseleave', resetRotateHandler);
-    return () => {
-      castedContainer.removeEventListener('mousemove', rotateHandler);
-      castedContainer.removeEventListener('mouseleave', resetRotateHandler);
+    const onMouseEnter = () => {
+      const card = cardRef.current;
+      const glare = glareRef.current;
+      if (!card || !glare) return;
+      card.style.transition = 'transform 100ms linear';
+      glare.style.transition = 'box-shadow 100ms linear';
+      timeout = setTimeout(() => {
+        card.style.transition = 'none';
+        glare.style.transition = 'none';
+      }, 100);
     };
-  }, [container, rotateHandler]);
+
+    element.addEventListener('mousemove', rotateHandler);
+    element.addEventListener('mouseleave', resetRotateHandler);
+    element.addEventListener('mouseenter', onMouseEnter);
+    return () => {
+      element.removeEventListener('mousemove', rotateHandler);
+      element.removeEventListener('mouseleave', resetRotateHandler);
+      element.removeEventListener('mouseenter', onMouseEnter);
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [container, rotateHandler, resetRotateHandler]);
 
   return (
     <div
@@ -68,29 +96,20 @@ const RotateCard: FC<RotateCardProps> = ({
       className={className}
     >
       <div
+        className="w-[inherit] h-[inherit] overflow-clip bg-[#222] relative will-change-transform"
         style={{
-          width: 'inherit',
-          height: 'inherit',
-          borderRadius: 16,
-          overflow: 'hidden',
-          background: '#222',
           transform: `rotateY(${-x}deg) rotateX(${y}deg)`,
-          position: 'relative',
           boxShadow: `0px 0px 0px ${borderWeight}px ${borderColor}`,
           ...style,
         }}
+        ref={cardRef}
       >
         {children}
         <div
+          ref={glareRef}
+          className="z-[100] inset-0 w-[inherit] h-[inherit] absolute rounded-[inherit] pointer-events-none"
           style={{
-            boxShadow: `inset ${-x}px ${-y}px ${x || y ? blur : 0}px ${spread}px ${color}`,
-            zIndex: 100,
-            width: 'inherit',
-            height: 'inherit',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            borderRadius: 16,
+            boxShadow: `inset ${-x}px ${-y}px ${blur}px ${spread}px ${color}`,
           }}
         ></div>
       </div>

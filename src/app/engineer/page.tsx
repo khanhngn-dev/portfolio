@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import Image from 'next/image';
@@ -34,20 +35,32 @@ import {
   VERSION_CI_CD_SKILL,
 } from '@/constants';
 
+/* eslint-disable @next/next/no-img-element */
+
 const EngineerPage = () => {
   return (
     <>
       <Observer querySelector=".section-container" />
       <Section id="dev_card">
         <div className="dashed-vertical"></div>
-        <div className="min-h-[100lvh] pt-[calc(var(--height-navbar)_+_2rem)] flex items-center gap-10 flex-col-reverse sm:flex-row justify-center">
+        <div
+          className="min-h-[100lvh] pt-[calc(var(--height-navbar)_+_2rem)] flex items-center gap-10 flex-col-reverse sm:flex-row justify-center"
+          id="dev-card-container"
+        >
           <div>
-            <RotateCard className="" width={288} height={400}>
-              <Image src="/images/dev_card.png" fill alt="dev card" />
+            <RotateCard
+              container="dev-card-container"
+              style={{ borderRadius: 22 }}
+              width={288}
+              height={400}
+            >
+              <img src="/images/dev_card.png" className="object-cover object-center w-full h-full" alt="dev card" />
             </RotateCard>
-            <p className="mt-10 flex items-center gap-2 font-light text-white/80 text-sm justify-center">
+            <p className="mt-8 flex items-end gap-2 font-light text-white/80 text-sm justify-center">
               <HiChevronDoubleUp className="w-6 h-6" />
-              that&lsquo;s daily.dev dev card
+              <a className="link" href="https://app.daily.dev/khanh_ng">
+                that&rsquo;s my daily.dev dev card
+              </a>
             </p>
           </div>
           <div>

@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { HiPlus } from 'react-icons/hi2';
 
 import {
   Button,
@@ -65,7 +66,7 @@ export default function Home() {
 
         <div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-blue-600 border-solid">
           <ImpressionHeader className={style['impression-header-sticky']}>NORMAL PERSON</ImpressionHeader>
-          <Card className="flex-grow" showPlus plusPosition="tl">
+          <Card className="flex-grow -mx-3 sm:mx-0" showPlus plusPosition="br">
             <CardList items={BRIEF_INFO} />
           </Card>
         </div>
@@ -73,7 +74,7 @@ export default function Home() {
         <div className="mt-20 flex flex-col sm:flex-row-reverse gap-4 p-3 sm:p-4 border-l-2 border-l-white border-solid">
           <ImpressionHeader className={style['impression-header-sticky']}>WITH ENGINEERING</ImpressionHeader>
           <Card
-            className="flex-grow"
+            className="flex-grow -mx-3 sm:mx-0"
             detail={{
               url: '/engineer',
               title: '/engineer for more detail',
@@ -82,11 +83,49 @@ export default function Home() {
             preFix={() => (
               <>
                 <SectionHeader title="brief" />
-                <CardList
+                {/* <CardList
                   className="p-3 sm:p-4 border-solid border-white/20 border bg-neutral-800 mt-3"
                   items={BRIEF_ENGINEER}
                   withCursor
-                />
+                /> */}
+                <div className="flex flex-wrap justify-between mt-3 bg-neutral-800">
+                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                    <div className="flex flex-col items-center">
+                      <p className="text-[240px] w-[120px] leading-[0.7] text-blue-600 relative -left-3">3</p>
+                    </div>
+                    <div className="sm:text-lg space-y-2">
+                      <p className="text-xl text-blue-600">years</p>
+                      <p>with Javascript</p>
+                      <p>working with React</p>
+                      <p>as Frontend dev</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                    <div className="flex flex-col items-center">
+                      <p className="text-[240px] w-[120px] leading-[0.7] text-primary relative -left-3">2</p>
+                    </div>
+                    <div className="sm:text-lg space-y-2">
+                      <p className="text-xl text-primary">years</p>
+                      <p>with Typescript</p>
+                      <p>working with Next</p>
+                      <p>as Fullstack dev</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                    <div className="flex flex-col items-center">
+                      <p className="text-[240px] w-[120px] leading-[0.7] relative -left-3">E</p>
+                    </div>
+                    <div className="sm:text-lg space-y-2">
+                      <p className="text-xl">xperience</p>
+                      <p>startup + big-tech</p>
+                      <p>automation platform</p>
+                      <p>
+                        tbc
+                        <span className="blinking-cursor w-max">_</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
                 <SectionHeader className="mt-10" title="technology" />
                 <StaggerImage className="mt-3" items={ENGINEERING_SKILLS} />
                 <SectionHeader className="mt-10" title="words to live by" />
@@ -105,9 +144,9 @@ export default function Home() {
         <div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-primary border-solid">
           <ImpressionHeader className={style['impression-header-sticky']}>with ui/ux</ImpressionHeader>
           <Card
-            className="flex-grow"
+            className="flex-grow -mx-3 sm:mx-0"
             showPlus
-            plusPosition="tl"
+            plusPosition="br"
             preFix={() => (
               <>
                 <SectionHeader title="brief" />
