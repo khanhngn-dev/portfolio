@@ -50,14 +50,10 @@ const Navbar = () => {
         showNavbarBg ? 'bg-neutral-900 shadow-2xl' : 'bg-transparent',
       )}
     >
-      <div className={clsx('max-w-7xl mx-auto px-5 sm:px-8 py-3 flex z-10 h-[var(--height-navbar)]')}>
-        <Link className="flex items-center" href="/">
-          home
-        </Link>
+      <div className={clsx('max-w-7xl container-center py-3 flex z-10 h-[var(--height-navbar)]')}>
         <div className="flex items-center relative group">
           {sections.length !== 0 ? (
             <>
-              <HiChevronDown className="h-6 w-6 mx-2 group-hover:rotate-180 transition-transform" />
               <div className="flex items-center">{activeSection}</div>
               <ul className="absolute top-1/2 invisible group-hover:top-full group-hover:visible opacity-0 group-hover:opacity-100 transition-all bg-neutral-800 shadow-2xl border border-white/20 border-solid -z-[1] py-3 w-[200px] px-3 flex flex-col gap-5">
                 {sections.map((section) => (
@@ -68,13 +64,14 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
+              <HiChevronDown className="h-6 w-6 mx-2 group-hover:rotate-180 transition-transform" />
             </>
           ) : null}
         </div>
 
         <div className="nav-link-desktop hidden sm:flex ml-auto gap-8">
           {Object.values(ROUTES).map((route) => (
-            <Link key={route} href={route} className={clsx('link', pathname.includes(route) && 'active')}>
+            <Link key={route} href={route} className={clsx('link', pathname === route && 'active')}>
               {route}
             </Link>
           ))}
@@ -95,11 +92,7 @@ const Navbar = () => {
           >
             <div className={clsx('overflow-hidden')}>
               {Object.values(ROUTES).map((route) => (
-                <Link
-                  key={route}
-                  href={route}
-                  className={clsx('link link-mobile', pathname.includes(route) && 'active')}
-                >
+                <Link key={route} href={route} className={clsx('link link-mobile', pathname === route && 'active')}>
                   {route}
                 </Link>
               ))}

@@ -1,7 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import { HiPlus } from 'react-icons/hi2';
+import Image from 'next/image';
+import { HiChevronDoubleUp, HiPlus } from 'react-icons/hi2';
 
 import {
   Button,
@@ -15,9 +16,12 @@ import {
   ImpressionHeader,
   Observer,
   QuoteCard,
+  RotateCard,
   Section,
   SectionHeader,
   StaggerImage,
+  SubSectionHeader,
+  Tooltip,
   TypingText,
 } from '@/components';
 import { QuoteCardProps } from '@/components/Card/types';
@@ -59,86 +63,112 @@ export default function Home() {
         <Header subtitle="something" title="about me" />
 
         <Card
-          title="tldr:"
-          className="mt-20 flex items-center gap-3 border-l-white border-l-2 mr-3 sm:mr-4"
-          postFix={() => <Button>grab my cv</Button>}
-        />
+          className="mt-20 border-l-white border-l-2"
+          preFix={() => (
+            <>
+              <div className="flex gap-3 items-center">
+                <SectionHeader title="tldr:" />
+                <Button>grab my cv</Button>
+              </div>
+            </>
+          )}
+          postFix={() => (
+            <div className="mt-10">
+              <SectionHeader title="how to reach me" />
+              <ContactList
+                className="mt-3 h-full flex-wrap sm:flex-row flex-col justify-between"
+                contacts={CONTACT_INFO}
+              />
+            </div>
+          )}
+        >
+          <CardList items={BRIEF_INFO} />
+        </Card>
+      </Section>
+      <Section id="engineer" className="sm:pt-60 pt-20">
+        <Header subtitle="all about" title="engineer career" />
 
-        <div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-blue-600 border-solid">
-          <ImpressionHeader className={style['impression-header-sticky']}>NORMAL PERSON</ImpressionHeader>
-          <Card className="flex-grow -mx-3 sm:mx-0" showPlus plusPosition="br">
-            <CardList items={BRIEF_INFO} />
-          </Card>
-        </div>
+        <div className="mt-20">
+          <SubSectionHeader>brief</SubSectionHeader>
 
-        <div className="mt-20 flex flex-col sm:flex-row-reverse gap-4 p-3 sm:p-4 border-l-2 border-l-white border-solid">
-          <ImpressionHeader className={style['impression-header-sticky']}>WITH ENGINEERING</ImpressionHeader>
           <Card
-            className="flex-grow -mx-3 sm:mx-0"
-            detail={{
-              url: '/engineer',
-              title: '/engineer for more detail',
-            }}
-            showPlus
+            title='dev card'
+            className="border-l-white border-l-2 mt-20"
             preFix={() => (
-              <>
-                <SectionHeader title="brief" />
-                {/* <CardList
-                  className="p-3 sm:p-4 border-solid border-white/20 border bg-neutral-800 mt-3"
-                  items={BRIEF_ENGINEER}
-                  withCursor
-                /> */}
-                <div className="flex flex-wrap justify-between mt-3 bg-neutral-800">
-                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
-                    <div className="flex flex-col items-center">
-                      <p className="text-[240px] w-[120px] leading-[0.7] text-blue-600 relative -left-3">3</p>
-                    </div>
-                    <div className="sm:text-lg space-y-2">
-                      <p className="text-xl text-blue-600">years</p>
-                      <p>with Javascript</p>
-                      <p>working with React</p>
-                      <p>as Frontend dev</p>
-                    </div>
+              <div id="dev-card-container" className="py-20 border-primary/40 border border-solid mt-3">
+                <RotateCard
+                  container="dev-card-container"
+                  className="mx-auto"
+                  style={{ borderRadius: 22 }}
+                  width={288}
+                  height={400}
+                >
+                  <Image
+                    src="https://raw.githubusercontent.com/KhanhNguyenGia/KhanhNguyenGia/main/devcard.svg"
+                    className="object-cover object-center w-full h-full"
+                    alt="dev card"
+                    fill
+                  />
+                </RotateCard>
+                <p className="mt-8 flex items-end gap-2 font-light text-white/80 text-sm justify-center">
+                  <HiChevronDoubleUp className="w-6 h-6" />
+                  <a className="link" href="https://app.daily.dev/khanh_ng">
+                    that&rsquo;s my daily.dev dev card
+                  </a>
+                </p>
+              </div>
+            )}
+            postFix={() => (
+              <div className="flex flex-wrap justify-between mt-3 bg-neutral-800">
+                <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                  <div className="flex flex-col items-center">
+                    <p className="text-[240px] leading-[0.7] text-blue-600 relative">3</p>
                   </div>
-                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
-                    <div className="flex flex-col items-center">
-                      <p className="text-[240px] w-[120px] leading-[0.7] text-primary relative -left-3">2</p>
-                    </div>
-                    <div className="sm:text-lg space-y-2">
-                      <p className="text-xl text-primary">years</p>
-                      <p>with Typescript</p>
-                      <p>working with Next</p>
-                      <p>as Fullstack dev</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
-                    <div className="flex flex-col items-center">
-                      <p className="text-[240px] w-[120px] leading-[0.7] relative -left-3">E</p>
-                    </div>
-                    <div className="sm:text-lg space-y-2">
-                      <p className="text-xl">xperience</p>
-                      <p>startup + big-tech</p>
-                      <p>automation platform</p>
-                      <p>
-                        tbc
-                        <span className="blinking-cursor w-max">_</span>
-                      </p>
-                    </div>
+                  <div className="sm:text-lg space-y-2">
+                    <p className="text-xl text-blue-600">years</p>
+                    <p>with Javascript</p>
+                    <p>working with React</p>
+                    <p>as Frontend dev</p>
                   </div>
                 </div>
-                <SectionHeader className="mt-10" title="technology" />
-                <StaggerImage className="mt-3" items={ENGINEERING_SKILLS} />
-                <SectionHeader className="mt-10" title="words to live by" />
-                <div className="p-3 sm:p-4 border-solid border-white/20 border bg-neutral-800 mt-3">
-                  <blockquote className="leading-loose">
-                    &ldquo;Any application that can be written in JavaScript, will eventually be written in
-                    JavaScript.&rdquo;
-                  </blockquote>
-                  <div className="w-max ml-auto italic font-sm mt-3">- Jeff Atwood, 2009</div>
+                <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                  <div className="flex flex-col items-center">
+                    <p className="text-[240px] leading-[0.7] text-primary relative">2</p>
+                  </div>
+                  <div className="sm:text-lg space-y-2">
+                    <p className="text-xl text-primary">years</p>
+                    <p>with Typescript</p>
+                    <p>working with Next</p>
+                    <p>as Fullstack dev</p>
+                  </div>
                 </div>
-              </>
+                <div className="flex flex-1 justify-center basis-[320px] border border-white/20 border-solid px-3 py-4 sm:px-4 sm:py-5">
+                  <div className="flex flex-col items-center">
+                    <p className="text-[240px] leading-[0.7] relative">E</p>
+                  </div>
+                  <div className="sm:text-lg space-y-2">
+                    <p className="text-xl">xperience</p>
+                    <p>startup + big-tech</p>
+                    <p>automation platform</p>
+                    <p>
+                      <span className="blinking-cursor w-max">_</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
             )}
           ></Card>
+        </div>
+
+        <SubSectionHeader className="mt-20">the stack(overflow)</SubSectionHeader>
+
+        <StaggerImage className="mt-20" items={ENGINEERING_SKILLS} />
+        <SectionHeader className="mt-10" title="words to live by" />
+        <div className="p-3 sm:p-4 border-solid border-white/20 border bg-neutral-800 mt-3">
+          <blockquote className="leading-loose">
+            &ldquo;Any application that can be written in JavaScript, will eventually be written in JavaScript.&rdquo;
+          </blockquote>
+          <div className="w-max ml-auto italic font-sm mt-3">- Jeff Atwood, 2009</div>
         </div>
 
         <div className="mt-20 flex flex-col sm:flex-row gap-4 p-3 sm:p-4 border-l-2 border-l-primary border-solid">
@@ -199,8 +229,6 @@ export default function Home() {
         <div className="mt-20 flex flex-wrap border-solid border-l-2 border-l-blue-600">
           <div className="bg-neutral-900 p-3 flex-1 basis-1/2 min-w-[300px] flex flex-col">
             <SectionHeader title="my contact" />
-
-            <ContactList className="mt-5 h-full" contacts={CONTACT_INFO} />
           </div>
           <div className="bg-neutral-800 p-3 sm:p-4 flex-1 basis-1/2 min-w-[300px]">
             <SectionHeader title="leave yours" />

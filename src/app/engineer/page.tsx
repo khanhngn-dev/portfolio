@@ -54,7 +54,7 @@ const EngineerPage = () => {
               width={288}
               height={400}
             >
-              <img src="/images/dev_card.png" className="object-cover object-center w-full h-full" alt="dev card" />
+              <img src="https://raw.githubusercontent.com/KhanhNguyenGia/KhanhNguyenGia/main/devcard.svg" className="object-cover object-center w-full h-full" alt="dev card" />
             </RotateCard>
             <p className="mt-8 flex items-end gap-2 font-light text-white/80 text-sm justify-center">
               <HiChevronDoubleUp className="w-6 h-6" />

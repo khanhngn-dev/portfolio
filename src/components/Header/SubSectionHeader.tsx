@@ -9,7 +9,7 @@ const SubSectionHeader: FC<SubSectionHeaderProps> = ({ children, className, ...p
   return (
     <h2
       className={clsx(
-        'text-2xl sm:text-3xl relative h-max z-10 mx-auto w-max flex tracking-widest',
+        'text-2xl sm:text-3xl relative h-max z-10 mx-auto w-max max-w-full break-words flex tracking-widest text-right',
         style['right-corner'],
         className,
       )}

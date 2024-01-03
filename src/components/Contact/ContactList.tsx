@@ -9,10 +9,10 @@ type ContactListProps = {
 
 const ContactList = ({ contacts, className }: ContactListProps) => {
   return (
-    <ul className={clsx('gap-8 flex flex-col', className)}>
+    <ul className={clsx('gap-8 flex', className)}>
       {contacts.map((contact) => (
         <li key={contact.url}>
-          <Contact {...contact} className="p-2 w-max" />
+          <Contact {...contact} className="py-2" />
         </li>
       ))}
     </ul>

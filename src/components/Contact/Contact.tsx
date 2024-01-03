@@ -19,14 +19,14 @@ const Contact = ({ icon, text, url, textToCopy = url, className }: ContactProps)
   const { text: tooltip, handleCopy } = useCopy();
 
   return (
-    <div className={clsx('flex items-center group link', className)}>
+    <div className={clsx('flex items-center group link justify-center', className)}>
       {icon}
       <a className="ml-3 mr-5 font-thin" href={url}>
         {text}
       </a>
       <Tooltip text={tooltip}>
         <FaCopy
-          className="w-6 h-6 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="w-6 h-6 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 cursor-pointer"
           onClick={() => handleCopy(textToCopy)}
         />
       </Tooltip>
