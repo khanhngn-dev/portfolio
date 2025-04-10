@@ -14,4 +14,5 @@ export const loadTheme = () => {
 
 export const saveTheme = (theme: 'light' | 'dark') => {
   localStorage.setItem(themeKey, theme);
+  document.documentElement.classList.toggle('dark', theme === 'dark');
 };

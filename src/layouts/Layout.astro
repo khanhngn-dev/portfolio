@@ -18,10 +18,10 @@ import '@/styles/global.css';
   </body>
 </html>
 <script is:inline>
-  let storedTheme = localStorage.getItem('k-theme');
+  let storedTheme = localStorage.getItem('_theme');
   if (!storedTheme) {
     storedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    localStorage.setItem('k-theme', storedTheme);
+    localStorage.setItem('_theme', storedTheme);
   }
   document.body.classList.toggle('dark', storedTheme === 'dark');
 </script>
