@@ -13,15 +13,26 @@ import '@/styles/global.css';
     <title>Astro Basics</title>
   </head>
   <body class="bg-background">
-    <Navbar client:idle />
+    <Navbar client:load />
     <slot />
   </body>
 </html>
 <script is:inline>
-  let storedTheme = localStorage.getItem('_theme');
-  if (!storedTheme) {
-    storedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    localStorage.setItem('_theme', storedTheme);
+  const loadTheme = () => {
+    const storedTheme = localStorage.getItem('_theme') || 'system';
+    
+    if (storedTheme === 'system') {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return isDarkMode ? 'dark' : 'light';
+    }
+
+    return storedTheme;
   }
-  document.body.classList.toggle('dark', storedTheme === 'dark');
+
+  const setTheme = (theme) => {
+    document.body.classList.toggle('dark', theme === 'dark');
+  }
+
+  const theme = loadTheme();
+  setTheme(theme);
 </script>
