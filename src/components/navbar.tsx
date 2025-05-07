@@ -1,10 +1,4 @@
-import {
-  AlbumIcon,
-  MoonIcon,
-  PackageIcon,
-  PanelsTopLeftIcon,
-  SunIcon,
-} from 'lucide-react';
+import { AlbumIcon, PackageIcon, PanelsTopLeftIcon } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -19,7 +13,8 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { useEffect, useState } from 'react';
-import { loadTheme, saveTheme, Theme } from '@/lib/theme';
+import { loadTheme, saveTheme, Theme, themeMap } from '@/lib/theme';
+import GithubIcon from './icons/github';
 
 const links = [
   {
@@ -41,6 +36,7 @@ const links = [
 
 const Navbar = () => {
   const [theme, setTheme] = useState<Theme>(Theme.SYSTEM);
+  const ActiveIcon = themeMap[theme].icon;
 
   const onToggleDarkMode = (theme: Theme) => {
     saveTheme(theme);
@@ -73,18 +69,27 @@ const Navbar = () => {
         <div className="flex-1 flex justify-end gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="ghost">
+              <Button size="icon" variant="outline">
+                <ActiveIcon />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => onToggleDarkMode(false)}>
-                Light Mode
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => onToggleDarkMode(true)}>
-                Dark Mode
-              </DropdownMenuItem>
+              {Object.entries(themeMap).map(([key, { icon: Icon, label }]) => (
+                <DropdownMenuItem
+                  key={key}
+                  onClick={() => onToggleDarkMode(key as Theme)}
+                >
+                  <Icon />
+                  {label}
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
+          <Button size="icon" className='border bg-white not-dark:hover:bg-accent' asChild>
+            <a href="https://github.com/khanhngn-dev" target="_blank">
+              <GithubIcon />
+            </a>
+          </Button>
         </div>
       </NavigationMenu>
     </div>
