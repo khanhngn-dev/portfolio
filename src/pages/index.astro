@@ -1,12 +1,20 @@
 ---
+import Container from '@/components/ui/container.astro';
 import Layout from '../layouts/Layout.astro';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-
+import { ChevronDownIcon } from 'lucide-react';
 export const prerender = true;
 ---
 
-<Layout />
+<Layout>
+  <section class="bg-dotted h-lvh relative">
+    <Container asElement="div" class="flex flex-col justify-center h-full">
+      <div>
+        <h1 class="text-5xl sm:text-7xl font-semibold mt-2">Khanh Nguyen</h1>
+        <h2 class="mt-5 text-xl sm:text-3xl">A passionate software engineer</h2>
+      </div>
+    </Container>
+    <button class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100">
+      <ChevronDownIcon />
+    </button>
+  </section>
+</Layout>

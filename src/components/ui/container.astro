@@ -1,0 +1,14 @@
+---
+import type React from 'react';
+
+type Props = {
+  class?: string;
+  asElement?: keyof React.JSX.IntrinsicElements;
+};
+
+const { class: className, asElement: Element = 'section' } = Astro.props;
+---
+
+<Element class:list={['max-w-6xl mx-auto px-4', className]}>
+  <slot />
+</Element>

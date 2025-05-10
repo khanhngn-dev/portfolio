@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,5 +116,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-dotted {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--foreground) 20%, transparent) 2px,
+      transparent 0
+    );
+    background-size: 60px 60px;
   }
 }
