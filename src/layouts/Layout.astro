@@ -1,5 +1,6 @@
 ---
 import Navbar from '@/components/navbar';
+import SearchCommand from '@/components/search-command';
 import '@/styles/global.css';
 ---
 
@@ -15,6 +16,7 @@ import '@/styles/global.css';
   <body>
     <Navbar client:load />
     <slot />
+    <SearchCommand client:only />
   </body>
 </html>
 <script is:inline>

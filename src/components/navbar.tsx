@@ -1,10 +1,14 @@
-import { AlbumIcon, MenuIcon, PackageIcon, PanelsTopLeftIcon } from 'lucide-react';
+import { openSearchCommand } from '@/libs/search-command';
+import { loadTheme, saveTheme, type Theme, themeMap } from '@/libs/theme';
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from './ui/navigation-menu';
+  AlbumIcon,
+  MenuIcon,
+  PackageIcon,
+  PanelsTopLeftIcon,
+  SearchIcon,
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import GithubIcon from './icons/github';
 import { Button } from './ui/button';
 import {
   DropdownMenu,
@@ -12,9 +16,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { useEffect, useState } from 'react';
-import { loadTheme, saveTheme, Theme, themeMap } from '@/libs/theme';
-import GithubIcon from './icons/github';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from './ui/navigation-menu';
 import {
   Sheet,
   SheetContent,
@@ -43,7 +50,7 @@ const links = [
 ];
 
 const Navbar = () => {
-  const [theme, setTheme] = useState<Theme>(Theme.SYSTEM);
+  const [theme, setTheme] = useState<Theme>('system');
   const ActiveIcon = themeMap[theme].icon;
 
   const onToggleDarkMode = (theme: Theme) => {
@@ -57,7 +64,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 max-w-6xl w-full px-4">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 max-w-6xl w-full px-4 z-10">
       <NavigationMenu className="bg-accent/50 backdrop-blur-md border p-1.5 rounded-lg w-full max-w-full">
         <Sheet>
           <SheetTrigger asChild>
@@ -95,8 +102,11 @@ const Navbar = () => {
             </NavigationMenuItem>
           ))}
         </NavigationMenuList>
-        <div className="flex-1 flex justify-end gap-2">
+        <div className="flex-1 flex justify-end gap-1.5">
           <DropdownMenu>
+            <Button size="icon" variant="ghost" onClick={openSearchCommand}>
+              <SearchIcon />
+            </Button>
             <DropdownMenuTrigger asChild>
               <Button size="icon" variant="ghost">
                 <ActiveIcon />
@@ -104,14 +114,21 @@ const Navbar = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               {Object.entries(themeMap).map(([key, { icon: Icon, label }]) => (
-                <DropdownMenuItem key={key} onClick={() => onToggleDarkMode(key as Theme)}>
+                <DropdownMenuItem
+                  key={key}
+                  onClick={() => onToggleDarkMode(key as Theme)}
+                >
                   <Icon />
                   {label}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button size="icon" className="border bg-white not-dark:hover:bg-accent" asChild>
+          <Button
+            size="icon"
+            className="border bg-white not-dark:hover:bg-accent"
+            asChild
+          >
             <a href="https://github.com/khanhngn-dev" target="_blank">
               <GithubIcon />
             </a>
