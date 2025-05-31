@@ -1,8 +1,7 @@
 ---
 import Container from '@/components/ui/container.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 import { ChevronDownIcon } from 'lucide-react';
-export const prerender = true;
 ---
 
 <Layout>
@@ -13,7 +12,9 @@ export const prerender = true;
         <h2 class="mt-5 text-xl sm:text-3xl">A passionate software engineer</h2>
       </div>
     </Container>
-    <button class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100">
+    <button
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100"
+    >
       <ChevronDownIcon />
     </button>
   </section>
