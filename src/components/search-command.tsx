@@ -1,4 +1,6 @@
 import {
+  closeDialogKeyBind,
+  openDialogKeyBind,
   searchCommandEventKey,
   searchCommandEventMap,
 } from '@/libs/search-command';
@@ -8,20 +10,9 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
   CommandSeparator,
 } from './ui/command';
-
-const openDialogKeyBind = {
-  '/': (event: KeyboardEvent) => event.ctrlKey || event.metaKey,
-  k: (event: KeyboardEvent) => event.ctrlKey || event.metaKey,
-};
-
-const closeDialogKeyBind = {
-  Escape: (event: KeyboardEvent) => event.key === 'Escape',
-  Enter: (event: KeyboardEvent) => event.key === 'Enter',
-};
 
 const useDialogKeyBind = () => {
   const [open, setOpen] = useState(false);
@@ -74,13 +65,11 @@ const SearchCommand = () => {
       <CommandInput placeholder="Search for a library, project, or blog..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Projects">
-          <CommandItem>Portfolio</CommandItem>
-        </CommandGroup>
+        <CommandGroup heading="Projects"></CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Libs"></CommandGroup>
         <CommandSeparator />
-        <CommandGroup heading="Blog"></CommandGroup>
+        <CommandGroup heading="Blogs"></CommandGroup>
       </CommandList>
     </CommandDialog>
   );
