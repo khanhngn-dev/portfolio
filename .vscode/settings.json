@@ -2,5 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }
