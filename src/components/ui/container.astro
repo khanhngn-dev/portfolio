@@ -1,14 +1,18 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import type React from 'react';
 
-type Props = {
-  class?: string;
+type Props = HTMLAttributes<'div'> & {
   asElement?: keyof React.JSX.IntrinsicElements;
 };
 
-const { class: className, asElement: Element = 'section' } = Astro.props;
+const {
+  class: className,
+  asElement: Element = 'section',
+  ...props
+} = Astro.props;
 ---
 
-<Element class:list={['max-w-6xl mx-auto px-4', className]}>
+<Element {...props} class:list={['max-w-4xl mx-auto px-4', className]}>
   <slot />
 </Element>

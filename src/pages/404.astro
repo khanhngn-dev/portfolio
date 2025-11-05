@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { AlertTriangleIcon } from 'lucide-react';
+
+const url = new URL(Astro.request.url);
+---
+
+<Layout>
+  <div class="h-svh flex flex-col items-center justify-center gap-2">
+    <AlertTriangleIcon className='size-8"' />
+    <h1 class="text-3xl font-semibold">Invalid request</h1>
+    <p class="text-muted-foreground text-center">
+      We couldn't find anything page under "{url.pathname}"<br />Please check
+      the URL and try again.
+    </p>
+  </div>
+</Layout>

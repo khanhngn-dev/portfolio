@@ -1,18 +1,18 @@
 import {
-  closeDialogKeyBind,
-  openDialogKeyBind,
-  searchCommandEventKey,
-  searchCommandEventMap,
-} from '@/libs/search-command';
-import { useEffect, useState } from 'react';
-import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandList,
   CommandSeparator,
-} from './ui/command';
+} from '@/components/ui/command';
+import {
+  closeDialogKeyBind,
+  openDialogKeyBind,
+  searchCommandEventKey,
+  searchCommandEventMap,
+} from '@/libs/search-command';
+import { useEffect, useState } from 'react';
 
 const useDialogKeyBind = () => {
   const [open, setOpen] = useState(false);

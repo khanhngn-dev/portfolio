@@ -1,21 +1,79 @@
 ---
+import GithubIcon from '@/assets/icons/github.svg';
+import LinkedinIcon from '@/assets/icons/linkedin.svg';
 import Container from '@/components/ui/container.astro';
+import AstroIcon from '@/assets/icons/astro.svg';
+import Link from '@/components/ui/link';
 import Layout from '@/layouts/Layout.astro';
+import InquiryForm from '@/components/features/inquiry-form';
 import { ChevronDownIcon } from 'lucide-react';
 ---
 
 <Layout>
-  <section class="bg-dotted h-lvh relative">
-    <Container asElement="div" class="flex flex-col justify-center h-full">
-      <div>
-        <h1 class="text-5xl sm:text-7xl font-semibold mt-2">Khanh Nguyen</h1>
-        <h2 class="mt-5 text-xl sm:text-3xl">A passionate software engineer</h2>
+  <Container
+    class="flex flex-col justify-center items-center text-center h-svh"
+  >
+    <div class="bg-dotted absolute inset-0 -z-10">
+      <div
+        class="bg-gradient-to-b from-transparent from-25% to-background size-full"
+      >
       </div>
-    </Container>
+    </div>
+    <div>
+      <h1 class="text-5xl sm:text-7xl font-semibold">Khanh Nguyen</h1>
+      <p class="mt-2 text-xl sm:text-3xl">A passionate software engineer</p>
+    </div>
+    <div class="flex items-center gap-4 mt-6 text-sm">
+      <Link href="https://github.com/khanhngn-dev/" target="_blank">
+        <GithubIcon />
+        khanhngn-dev
+      </Link>
+      <Link
+        href="https://www.linkedin.com/in/khanh-gia-nguyen/"
+        target="_blank"
+      >
+        <LinkedinIcon />
+        khanh-gia-nguyen
+      </Link>
+    </div>
     <button
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100"
+      id="scroll-next-button"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-50 hover:opacity-100"
     >
       <ChevronDownIcon />
     </button>
-  </section>
+  </Container>
+  <Container
+    class="bg-background relative pt-20 flex flex-col gap-6"
+    id="inquiry"
+  >
+    <h2 class="sm:text-center">
+      <a href="#inquiry" class="group text-xl sm:text-3xl font-semibold">
+        <span
+          class="group-hover:text-foreground text-muted-foreground transition-colors"
+        >
+          #
+        </span>
+        Inquiry
+      </a>
+    </h2>
+    <InquiryForm client:only="react" />
+  </Container>
+  <Container class="bg-background" asElement="footer">
+    <p class="text-center text-sm py-6 text-muted-foreground">
+      Built with <AstroIcon class="size-5 inline" /> Astro by Khanh Nguyen
+    </p>
+  </Container>
 </Layout>
+
+<script>
+  const scrollToNextSection = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
+  const button = document.getElementById('scroll-next-button');
+  button.addEventListener('click', scrollToNextSection);
+</script>

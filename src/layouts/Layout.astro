@@ -1,6 +1,5 @@
 ---
-import Navbar from '@/components/navbar';
-import SearchCommand from '@/components/search-command';
+import Navbar from '@/components/ui/navbar';
 import '@/styles/global.css';
 ---
 
@@ -16,7 +15,7 @@ import '@/styles/global.css';
   <body>
     <Navbar client:load />
     <slot />
-    <SearchCommand client:only="react" />
+    <!-- <SearchCommand client:only="react" /> -->
   </body>
 </html>
 <script is:inline>
@@ -24,7 +23,11 @@ import '@/styles/global.css';
     document.body.classList.toggle('dark', theme === 'dark');
   };
 
-  const storedTheme = localStorage.getItem('_theme');
+  const getTheme = () => {
+    return localStorage.getItem('_theme');
+  };
+
+  const storedTheme = getTheme();
   const query = window.matchMedia('(prefers-color-scheme: dark)');
 
   if (storedTheme === 'dark' || storedTheme === 'light') {
@@ -34,7 +37,7 @@ import '@/styles/global.css';
   }
 
   query.addEventListener('change', (e) => {
-    const storedTheme = localStorage.getItem('_theme');
+    const storedTheme = getTheme();
     // If the user has set a theme, don't change it
     if (storedTheme === 'dark' || storedTheme === 'light') {
       return;
