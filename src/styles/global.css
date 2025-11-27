@@ -122,7 +122,7 @@
 @layer utilities {
   .bg-dotted {
     background-image: radial-gradient(
-      color-mix(in oklab, var(--foreground) 20%, transparent) 2px,
+      color-mix(in oklab, var(--foreground) 30%, transparent) 2px,
       transparent 0
     );
     background-size: 60px 60px;

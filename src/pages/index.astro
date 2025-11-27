@@ -7,6 +7,13 @@ import Link from '@/components/ui/link';
 import Layout from '@/layouts/Layout.astro';
 import InquiryForm from '@/components/features/inquiry-form';
 import { ChevronDownIcon } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 ---
 
 <Layout>
@@ -45,22 +52,36 @@ import { ChevronDownIcon } from 'lucide-react';
   </Container>
   <Container
     class="bg-background relative pt-20 flex flex-col gap-6"
-    id="inquiry"
+    id="about"
+  />
+  <Container
+    class="bg-background relative pt-20 flex flex-col gap-6"
+    id="contact"
   >
     <h2 class="sm:text-center">
-      <a href="#inquiry" class="group text-xl sm:text-3xl font-semibold">
+      <a href="#contact" class="group text-xl sm:text-3xl font-semibold">
         <span
           class="group-hover:text-foreground text-muted-foreground transition-colors"
         >
           #
         </span>
-        Inquiry
+        Contact
       </a>
     </h2>
-    <InquiryForm client:visible />
+    <Card className="max-w-2xl w-full mx-auto">
+      <CardHeader>
+        <CardTitle>Get in Touch</CardTitle>
+        <CardDescription>
+          Feel free to reach out for collaborations or just a friendly hello!
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <InquiryForm client:visible />
+      </CardContent>
+    </Card>
   </Container>
   <Container class="bg-background" asElement="footer">
-    <p class="text-center text-sm py-6 text-muted-foreground">
+    <p class="text-center text-sm py-10 text-muted-foreground">
       Built with <AstroIcon class="size-5 inline" /> Astro by Khanh Nguyen
     </p>
   </Container>
