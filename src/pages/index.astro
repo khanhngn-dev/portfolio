@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import SectionHeader from '@/components/ui/section-header.astro';
 ---
 
 <Layout>
@@ -51,31 +52,28 @@ import {
     </button>
   </Container>
   <Container
-    class="bg-background relative pt-20 flex flex-col gap-6"
+    class="bg-background relative py-20 flex flex-col gap-6"
     id="about"
-  />
+  >
+    <SectionHeader href="#about"> About me </SectionHeader>
+    Hello! I'm Khanh (Jerry), a Fullstack Software Engineer specializing in the JavaScript
+    ecosystem. With a background spanning both dynamic startup and large-scale enterprise
+    settings, I possess the proven adaptability and confidence to quickly integrate
+    and deliver highly desirable results.
+  </Container>
   <Container
-    class="bg-background relative pt-20 flex flex-col gap-6"
+    class="bg-background relative py-20 flex flex-col gap-6"
     id="contact"
   >
-    <h2 class="sm:text-center">
-      <a href="#contact" class="group text-xl sm:text-3xl font-semibold">
-        <span
-          class="group-hover:text-foreground text-muted-foreground transition-colors"
-        >
-          #
-        </span>
-        Contact
-      </a>
-    </h2>
-    <Card className="max-w-2xl w-full mx-auto">
-      <CardHeader>
+    <SectionHeader href="#contact"> Contact </SectionHeader>
+    <Card className="max-w-2xl w-full mx-auto grid sm:grid-cols-3">
+      <CardHeader className="sm:col-span-1 grid-rows-none sm:pr-0">
         <CardTitle>Get in Touch</CardTitle>
         <CardDescription>
           Feel free to reach out for collaborations or just a friendly hello!
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="sm:col-span-2 sm:pl-0">
         <InquiryForm client:visible />
       </CardContent>
     </Card>

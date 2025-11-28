@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 max-w-4xl w-full px-4 z-10">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 max-w-2xl w-full px-4 z-10">
       <nav className="relative flex flex-1 items-center bg-background/80 backdrop-blur-sm border-2 p-1 rounded-lg w-full max-w-full">
         <div className="px-3">
           <a href="/" className="font-semibold" onClick={onHomeClick}>
@@ -32,11 +32,11 @@ const Navbar = () => {
             <SunIcon className="dark:hidden" />
             <MoonIcon className="hidden dark:flex" />
           </Button>
-          <a href="https://github.com/khanhngn-dev" target="_blank">
-            <Button size="icon" variant="ghost">
+          <Button size="icon" variant="ghost" asChild>
+            <a href="https://github.com/khanhngn-dev" target="_blank">
               <GithubIcon />
-            </Button>
-          </a>
+            </a>
+          </Button>
         </div>
       </nav>
     </div>

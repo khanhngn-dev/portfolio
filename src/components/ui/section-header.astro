@@ -1,0 +1,18 @@
+---
+type Props = {
+  href?: string;
+};
+
+const { href } = Astro.props;
+---
+
+<h2 class="sm:text-">
+  <a href={href} class="group text-xl sm:text-3xl font-semibold">
+    <span
+      class="group-hover:text-foreground text-muted-foreground transition-colors"
+    >
+      <slot name="left"> # </slot>
+    </span>
+    <slot />
+  </a>
+</h2>
